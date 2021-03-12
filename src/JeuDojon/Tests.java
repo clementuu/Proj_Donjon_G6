@@ -12,6 +12,9 @@ public class Tests {
 		d.placer(13,3,'#');
 		d.placer(13,4,'#');
 		d.placer(13,5,'#');
+		
+		System.out.println("X = Joueur \n# = Mur \n");
+		
 		d.afficher();
 	}
 }
