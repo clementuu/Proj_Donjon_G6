@@ -6,5 +6,7 @@ public class Tests {
 		
 		Donjon d = new Donjon(15,10);
 		d.afficher();
+		
+		d.placerPerso(4, 7);
 	}
 }
