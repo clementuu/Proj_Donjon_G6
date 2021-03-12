@@ -47,17 +47,29 @@ public class Donjon {
 		System.out.println();
 	}
 	
-	public void placerPerso(int x, int y) {
+	public void placer(int x, int y, char p) {
 		x = x-1;
-		y=y-1;
+		y = y-1;
 		
-		if(x<0 || y<0 || x>longueur || y>largeur) {
-			System.err.print("Hors map");
-		}
-		if(donjon[x][y]=='?') {
-			donjon[x][y]='P';
+		if(p=='X') {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				System.err.print("Hors map");
+			}
+			if(donjon[x][y]=='?') {
+				donjon[x][y]='X';
+			}
 		}
 		
+		if(p=='#') {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				System.err.print("Hors map");
+			}
+			if(donjon[x][y]=='?') {
+				donjon[x][y]='#';
+			}
+		}		
+		
+	
 	}
 	
 }
