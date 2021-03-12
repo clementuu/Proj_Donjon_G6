@@ -12,9 +12,24 @@ public class Tests {
 		d.placer(13,3,'#');
 		d.placer(13,4,'#');
 		d.placer(13,5,'#');
+		d.placer(2,7,'#');
 		
 		System.out.println("X = Joueur \n# = Mur \n");
 		
 		d.afficher();
+		
+		System.out.println(d.getCase(4,7));
+		
+		d.moveUp();
+		d.afficher();
+		d.moveUp();
+		d.afficher();
+		d.moveLeft();
+		d.afficher();
+		d.moveLeft();
+		d.afficher();
+		d.moveRight();
+		d.afficher();
+		
 	}
 }

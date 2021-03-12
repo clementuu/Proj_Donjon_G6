@@ -72,4 +72,88 @@ public class Donjon {
 	
 	}
 	
+	public char getCase(int x, int y) {
+		return donjon[x][y];
+	}
+	
+	public void moveUp() {
+		
+		char m;
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				if (donjon[i][j]=='X') {
+					if(i-1>=0 && donjon[i-1][j]!='#') {
+						m = donjon[i][j];
+						donjon[i][j] = ' ';
+						donjon[i-1][j] = m;
+					}
+					else donjon[i-1][j] ='#';
+					
+				}
+			
+			}	
+		}
+		
+	}
+	
+	public void moveDown() {
+		
+		char m;
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				if (donjon[i][j]=='X') {
+					if(i+1<longueur && donjon[i+1][j]!='#') {
+						m = donjon[i][j];
+						donjon[i][j] = ' ';
+						donjon[i+1][j] = m;
+					}
+					else donjon[i+1][j] ='#';
+					
+				}
+			
+			}	
+		}
+		
+	}
+	
+	public void moveRight() {
+		
+		char m;
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				if (donjon[i][j]=='X') {
+					if(j+1<largeur && donjon[i][j+1]!='#') {
+						m = donjon[i][j];
+						donjon[i][j] = ' ';
+						donjon[i][j+1] = m;
+					}
+					else donjon[i][j+1] ='#';
+					
+				}
+			
+			}	
+		}
+		
+	}
+	
+	public void moveLeft() {
+		
+		char m;
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				if (donjon[i][j]=='X') {
+					if(j-1>=0 && donjon[i][j-1]!='#') {
+						m = donjon[i][j];
+						donjon[i][j] = ' ';
+						donjon[i][j-1] = m;
+					}
+					else donjon[i][j-1] ='#';
+					
+				}
+			
+			}	
+		}
+		
+	}
+	
 }
