@@ -17,13 +17,23 @@ public class Personnage {
 		setVie(vie);
 		setAttaque(attaque);
 	}
+	
+	public Personnage(int vie,int attaque,char perso) {
+		setVie(vie);
+		setAttaque(attaque);
+		setPerso(perso);
+	}
 
 	public int getVie() {
 		return vie;
 	}
 
 	public void setVie(int vie) {
-		this.vie = vie;
+		if(vie>=5 && vie<=20) {
+			this.vie = vie;
+		}
+		else
+			System.err.print("Vie du personnage trop faible ou trop élevée \n");
 	}
 
 	public ArrayList<Objet>[] getInventaire() {
@@ -39,7 +49,11 @@ public class Personnage {
 	}
 
 	public void setAttaque(int attaque) {
-		this.attaque = attaque;
+		if(attaque>=1 && attaque<=10) {
+			this.attaque = attaque;
+		}
+		else
+			System.err.print("Personnage trop faible ou trop puissant \n");
 	}
 
 	public char getPerso() {
@@ -47,7 +61,11 @@ public class Personnage {
 	}
 
 	public void setPerso(char perso) {
-		this.perso = perso;
+		if(perso == 'X' || perso == 'M') {
+			this.perso = perso;
+		}
+		else
+			System.err.print("Personnage inconnu \n");
 	}
 
 	
