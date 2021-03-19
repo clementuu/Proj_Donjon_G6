@@ -1,4 +1,5 @@
 package JeuDojon;
+
 public class Personnage {
 	
 	private int vie;

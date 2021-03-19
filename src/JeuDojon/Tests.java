@@ -14,7 +14,7 @@ public class Tests {
 		d.placer(13,5,'#');
 		d.placer(2,7,'#');
 		
-		System.out.println("X = Joueur \n# = Mur \n");
+		System.out.println("X = Joueur \n# = Mur \nP = Potion \n§ = Piège");
 		
 		d.afficher();
 		
