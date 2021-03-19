@@ -9,7 +9,7 @@ public class Tests {
 		Objet mur = new Objet('#');
 		Objet potion = new Objet('P');
 		Objet piege = new Objet('§');
-		Personnage M = new Monstres(10,10,'M'); 
+		Personnage M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
 		
 		d.placerPerso(14,9,M);
@@ -62,7 +62,8 @@ public class Tests {
 		
 		System.out.println( "Test getter getCase(4,7) : " + d.getCase(4,7) + "\n");
 		
-		d.moveUp(X);
+		d.moveDown(X);
+		d.afficher();
 		d.moveUp(X);
 		d.afficher();
 		d.moveLeft(X);
@@ -70,5 +71,6 @@ public class Tests {
 		d.afficher();
 		d.moveDown(X);
 		d.afficher();
+		d.moveRight(X);
 	}
 }

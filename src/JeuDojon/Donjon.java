@@ -15,7 +15,7 @@ public class Donjon {
 	
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				donjon[i][j]='?';
+				donjon[i][j]='-';
 			}
 		}
 	}	
@@ -56,7 +56,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='?') {
+			if(donjon[x][y]=='-') {
 				donjon[x][y]='#';
 			}
 		}
@@ -65,7 +65,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='?') {
+			if(donjon[x][y]=='-') {
 				donjon[x][y]='P';
 			}
 		}
@@ -74,7 +74,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='?') {
+			if(donjon[x][y]=='-') {
 				donjon[x][y]='§';
 			}
 		}		
@@ -89,7 +89,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='?') {
+			if(donjon[x][y]=='-') {
 				donjon[x][y]=p.getPerso();
 			}
 		}
@@ -100,12 +100,13 @@ public class Donjon {
 	}
 	
 	public void moveUp(Personnage P) {
-		
+		//On cherche l'avatar dans le tableau
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
+				//On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 				if (donjon[i][j]== P.getPerso()) {
-					if(i-1>=0 && donjon[i-1][j]!='#') {
-						donjon[i][j] = ' ';
+					if(i-1>0 && donjon[i-1][j]!='#') {
+						donjon[i][j] = '-';
 						donjon[i-1][j] = P.getPerso();
 					}
 					else donjon[i-1][j] ='#';
@@ -123,7 +124,7 @@ public class Donjon {
 			for(int j=0;j<largeur;j++) {
 				if (donjon[i][j]== P.getPerso()) {
 					if(i+1<longueur && donjon[i+1][j]!='#') {
-						donjon[i][j] = ' ';
+						donjon[i][j] = '-';
 						donjon[i+1][j] = P.getPerso();
 					}
 					else donjon[i+1][j] ='#';
@@ -141,7 +142,7 @@ public class Donjon {
 			for(int j=0;j<largeur;j++) {
 				if (donjon[i][j]== P.getPerso()) {
 					if(j+1<largeur && donjon[i][j+1]!='#') {
-						donjon[i][j] = ' ';
+						donjon[i][j] = '-';
 						donjon[i][j+1] = P.getPerso();
 					}
 					else donjon[i][j+1] ='#';
@@ -159,7 +160,7 @@ public class Donjon {
 			for(int j=0;j<largeur;j++) {
 				if (donjon[i][j]== P.getPerso()) {
 					if(j-1>=0 && donjon[i][j-1]!='#') {
-						donjon[i][j] = ' ';
+						donjon[i][j] = '-';
 						donjon[i][j-1] = P.getPerso();
 					}
 					else donjon[i][j-1] ='#';
@@ -170,6 +171,7 @@ public class Donjon {
 		}
 		
 	}
+	
 	
 	
 	
