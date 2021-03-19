@@ -85,7 +85,7 @@ public class Donjon {
 		x = x-1;
 		y = y-1;
 		
-		if(p.getPerso()=='X') {
+		if(p.getPerso()=='X' || p.getPerso()=='M') {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
