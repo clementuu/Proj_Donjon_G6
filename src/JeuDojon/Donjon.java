@@ -40,52 +40,73 @@ public class Donjon {
 
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				System.out.print(" "+ donjon[i][j]);
+				System.out.print("  "+ donjon[i][j]);
 			}
-			System.out.println();
+			System.out.println("\n");
 		}
 		System.out.println();
 	}
 	
-	public void placer(int x, int y, char p) {
+	public void placerObj(int x, int y, Objet p) {
 		x = x-1;
 		y = y-1;
 		
-		if(p=='X') {
-			if(x<0 || y<0 || x>longueur || y>largeur) {
-				System.err.print("Hors map");
-			}
-			if(donjon[x][y]=='?') {
-				donjon[x][y]='X';
-			}
-		}
 		
-		if(p=='#') {
+		if(p.getObjet()=='#') {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
 			if(donjon[x][y]=='?') {
 				donjon[x][y]='#';
 			}
-		}		
+		}
 		
+		if(p.getObjet()=='P') {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				System.err.print("Hors map");
+			}
+			if(donjon[x][y]=='?') {
+				donjon[x][y]='P';
+			}
+		}
+		
+		if(p.getObjet()=='§') {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				System.err.print("Hors map");
+			}
+			if(donjon[x][y]=='?') {
+				donjon[x][y]='§';
+			}
+		}		
 	
+	}
+	
+	public void placerPerso(int x, int y, Personnage p) {
+		x = x-1;
+		y = y-1;
+		
+		if(p.getPerso()=='X') {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				System.err.print("Hors map");
+			}
+			if(donjon[x][y]=='?') {
+				donjon[x][y]=p.getPerso();
+			}
+		}
 	}
 	
 	public char getCase(int x, int y) {
 		return donjon[x][y];
 	}
 	
-	public void moveUp() {
+	public void moveUp(Personnage P) {
 		
-		char m;
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				if (donjon[i][j]=='X') {
+				if (donjon[i][j]== P.getPerso()) {
 					if(i-1>=0 && donjon[i-1][j]!='#') {
-						m = donjon[i][j];
 						donjon[i][j] = ' ';
-						donjon[i-1][j] = m;
+						donjon[i-1][j] = P.getPerso();
 					}
 					else donjon[i-1][j] ='#';
 					
@@ -96,16 +117,14 @@ public class Donjon {
 		
 	}
 	
-	public void moveDown() {
+	public void moveDown(Personnage P) {
 		
-		char m;
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				if (donjon[i][j]=='X') {
+				if (donjon[i][j]== P.getPerso()) {
 					if(i+1<longueur && donjon[i+1][j]!='#') {
-						m = donjon[i][j];
 						donjon[i][j] = ' ';
-						donjon[i+1][j] = m;
+						donjon[i+1][j] = P.getPerso();
 					}
 					else donjon[i+1][j] ='#';
 					
@@ -116,16 +135,14 @@ public class Donjon {
 		
 	}
 	
-	public void moveRight() {
+	public void moveRight(Personnage P) {
 		
-		char m;
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				if (donjon[i][j]=='X') {
+				if (donjon[i][j]== P.getPerso()) {
 					if(j+1<largeur && donjon[i][j+1]!='#') {
-						m = donjon[i][j];
 						donjon[i][j] = ' ';
-						donjon[i][j+1] = m;
+						donjon[i][j+1] = P.getPerso();
 					}
 					else donjon[i][j+1] ='#';
 					
@@ -136,16 +153,14 @@ public class Donjon {
 		
 	}
 	
-	public void moveLeft() {
+	public void moveLeft(Personnage P) {
 		
-		char m;
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				if (donjon[i][j]=='X') {
+				if (donjon[i][j]== P.getPerso()) {
 					if(j-1>=0 && donjon[i][j-1]!='#') {
-						m = donjon[i][j];
 						donjon[i][j] = ' ';
-						donjon[i][j-1] = m;
+						donjon[i][j-1] = P.getPerso();
 					}
 					else donjon[i][j-1] ='#';
 					
@@ -155,5 +170,7 @@ public class Donjon {
 		}
 		
 	}
+	
+	
 	
 }
