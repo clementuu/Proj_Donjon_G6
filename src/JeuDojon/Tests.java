@@ -4,13 +4,15 @@ public class Tests {
 	
 	public static void main(String[] args) {
 		
-		Personnage X = new Personnage(10); 
+		Personnage X = new Personnage(10,10,'X'); 
 		Donjon d = new Donjon(15,10);
 		Objet mur = new Objet('#');
 		Objet potion = new Objet('P');
 		Objet piege = new Objet('§');
+		Personnage M = new Monstres(10,10,'M'); 
+		d.placerPerso(2,8,X);
 		
-		d.placerPerso(4,7,X);
+		d.placerPerso(14,9,M);
 		
 		for(int i=1; i<=10; i++) {
 			d.placerObj(i,1,mur);
@@ -30,6 +32,17 @@ public class Tests {
 		
 		for(int j=1; j<=10; j++) {
 			d.placerObj(1,j,mur);
+		}
+		for(int j=2; j<=9; j++) {
+			d.placerObj(15,j,mur);
+		}
+		
+		for(int i=11; i<15; i++) {
+			d.placerObj(i,7,mur);
+		}
+		
+		for(int i=8; i<=11; i++) {
+			d.placerObj(i,8,mur);
 		}
 		
 		d.placerObj(2,7,mur);
