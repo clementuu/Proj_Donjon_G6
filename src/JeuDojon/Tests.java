@@ -1,5 +1,7 @@
 package JeuDojon;
 
+import java.util.*;
+
 public class Tests {
 	
 	public static void main(String[] args) {
@@ -54,23 +56,55 @@ public class Tests {
 		d.placerObj(2,5,mur);
 		d.placerObj(2,4,mur);
 		d.placerObj(4,6,mur);
+		d.placerObj(12,3,mur);
 		
-		
-		System.out.println("X = Joueur \n# = Mur \nP = Potion \n§ = Piège \n");
+		System.out.println("Légende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
 		
 		d.afficher();
 		
-		System.out.println( "Test getter getCase(4,7) : " + d.getCase(4,7) + "\n");
+		//System.out.println( "Test getter getCase(4,7) : " + d.getCase(4,7) + "\nDone\n");
 		
-		d.moveDown(X);
-		d.afficher();
-		d.moveUp(X);
+		//while(X.getPerso())
+		for (int manche=0;manche<=50;manche++) {
+			System.out.println("Veuillez communiquer vos 4 prochains déplacements : ");
+			Scanner sc = new Scanner(System.in);
+			String com = sc.next();
+			System.out.println("Vous avez tapé : " + com + "\n");
+			
+			if(com.length() == 4) {
+				for(int i=0;i<=com.length()-1;i++) {
+					if(com.charAt(i) == 'z') {
+						d.move(X,"Up");
+					}
+					if(com.charAt(i) == 's') {
+						d.move(X,"Down");
+					}
+					if(com.charAt(i) == 'd') {
+						d.move(X,"Right");
+					}
+					if(com.charAt(i) == 'q') {
+						d.move(X,"Left");
+					}
+			}
+			
+			}
+			else System.err.print("On a dit 4");
+			
+			d.afficher();
+			
+			
+		}
+		
+		
+		
+		
+		/*d.moveUp(X);
 		d.afficher();
 		d.moveLeft(X);
 		d.moveLeft(X);
 		d.afficher();
 		d.moveDown(X);
 		d.afficher();
-		d.moveRight(X);
+		d.moveRight(X); */
 	}
 }
