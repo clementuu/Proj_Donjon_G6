@@ -4,10 +4,14 @@ import java.util.*;
 
 public class Personnage {
 	
+	//Attributs
+	
 	private char perso = 'X';
 	private int vie;
 	private ArrayList<Objet>[] inventaire;
 	private int attaque;
+	
+	//Constructeurs
 	
 	public Personnage(int vie) {
 		setVie(vie);
@@ -23,7 +27,9 @@ public class Personnage {
 		setAttaque(attaque);
 		setPerso(perso);
 	}
-
+	
+	//Geters et seters
+	
 	public int getVie() {
 		return vie;
 	}

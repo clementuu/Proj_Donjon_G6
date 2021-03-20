@@ -2,12 +2,18 @@ package JeuDojon;
 
 public class Objet {
 	
+	//Attribut
+	
 	private char objet = 'o';
+	
+	//Constructeur
 	
 	public Objet(char objet) {
 		setObjet(objet);
 	}
-
+	
+	//Geters et seters
+	
 	public char getObjet() {
 		return objet;
 	}

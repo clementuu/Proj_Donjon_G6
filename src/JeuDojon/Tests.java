@@ -19,35 +19,39 @@ public class Tests {
 		for(int i=1; i<=10; i++) {
 			d.placerObj(i,1,mur);
 		}
-		
 		for(int i=15; i>=12; i--) {
 			d.placerObj(i,1,mur);
 		}
-		
 		for(int i=1; i<=15; i++) {
 			d.placerObj(i,10,mur);
 		}
-		
 		for(int j=2; j<=5; j++) {
 			d.placerObj(13,j,mur);
 		}
-		
 		for(int j=1; j<=10; j++) {
 			d.placerObj(1,j,mur);
 		}
 		for(int j=2; j<=9; j++) {
 			d.placerObj(15,j,mur);
 		}
-		
 		for(int i=11; i<15; i++) {
 			d.placerObj(i,7,mur);
 		}
-		
 		for(int i=8; i<=11; i++) {
 			d.placerObj(i,8,mur);
 		}
+		for(int i=2; i<=5; i++) {
+			d.placerObj(i,7,mur);
+		}
+		for(int i=9; i<=12; i++) {
+			d.placerObj(i,3,mur);
+		}
+		for(int j=2; j<=5; j++) {
+			d.placerObj(6,j,mur);
+		}
 		
 		d.placerObj(2,7,mur);
+		d.placerObj(3,7,mur);
 		d.placerObj(12,2,piege);
 		d.placerObj(6,9,potion);
 		d.placerObj(10,6,piege);
@@ -56,7 +60,6 @@ public class Tests {
 		d.placerObj(2,5,mur);
 		d.placerObj(2,4,mur);
 		d.placerObj(4,6,mur);
-		d.placerObj(12,3,mur);
 		
 		System.out.println("Légende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
 		
@@ -64,7 +67,6 @@ public class Tests {
 		
 		//System.out.println( "Test getter getCase(4,7) : " + d.getCase(4,7) + "\nDone\n");
 		
-		//while(X.getPerso())
 		for (int manche=0;manche<=50;manche++) {
 			System.out.println("Veuillez communiquer vos 4 prochains déplacements : ");
 			Scanner sc = new Scanner(System.in);
@@ -88,15 +90,11 @@ public class Tests {
 			}
 			
 			}
-			else System.err.print("On a dit 4");
+			else System.err.print("On a dit 4 \n");
 			
 			d.afficher();
 			
-			
 		}
-		
-		
-		
 		
 		/*d.moveUp(X);
 		d.afficher();

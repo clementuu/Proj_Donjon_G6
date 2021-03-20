@@ -1,11 +1,14 @@
 package JeuDojon;
-import java.util.*;
 
 public class Donjon {
+	
+	//Attributs
 	
 	private int longueur;
 	private int largeur;
 	private char[][]donjon;
+	
+	//Constructeur
 	
 	public Donjon(int longueur,int largeur) {
 		setLongueur(longueur);
@@ -19,6 +22,8 @@ public class Donjon {
 			}
 		}
 	}	
+	
+	//Seters et geters
 	
 	public int getLargeur() {
 		return largeur;
@@ -36,6 +41,8 @@ public class Donjon {
 		this.longueur = longueur;
 	}
 	
+	//Fonctions
+	
 	public void afficher() {
 
 		for(int i=0;i<longueur;i++) {
@@ -48,7 +55,8 @@ public class Donjon {
 	}
 	
 	public void placerObj(int x, int y, Objet p) {
-		x = x-1;
+		
+		x = x-1; //ça permet placer les objets et perso en (1,1) au lieu de (0,0) c'est plus intuitif
 		y = y-1;
 		
 		
@@ -82,6 +90,7 @@ public class Donjon {
 	}
 	
 	public void placerPerso(int x, int y, Personnage p) {
+		
 		x = x-1;
 		y = y-1;
 		
@@ -174,5 +183,6 @@ public class Donjon {
 		
 	}
 	
+	//Essayez de rajouter des fonctions pour soigner quand on recupere un potion, infliger des degats quand on tombe dans un piege etc 
 	
 }
