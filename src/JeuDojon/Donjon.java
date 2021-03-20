@@ -111,7 +111,9 @@ public class Donjon {
 							donjon[i][j] = '-';
 							donjon[i-1][j] = P.getPerso();
 						}
-						else donjon[i-1][j] ='#';
+						if(i-1==0){
+							System.out.println("Félicitations! Niveau terminé");
+						}
 						
 					}
 				
@@ -126,8 +128,10 @@ public class Donjon {
 							donjon[i][j] = '-';
 							donjon[i+1][j] = P.getPerso();
 						}
-						else donjon[i+1][j] ='#';
-						
+						if(i+1==longueur){
+							System.out.println("Félicitations! Niveau terminé");
+						}
+					
 					}
 				
 				}	
@@ -141,8 +145,10 @@ public class Donjon {
 							donjon[i][j] = '-';
 							donjon[i][j+1] = P.getPerso();
 						}
-						else donjon[i][j+1] ='#';
-						
+						if(i+1==largeur){
+							System.out.println("Félicitations! Niveau terminé");
+						}
+					
 					}
 				
 				}	
@@ -152,12 +158,14 @@ public class Donjon {
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso()) {
-						if(j-1>=0 && donjon[i][j-1]!='#') {
+						if(j-1>0 && donjon[i][j-1]!='#') {
 							donjon[i][j] = '-';
 							donjon[i][j-1] = P.getPerso();
 						}
-						else donjon[i][j-1] ='#';
-						
+						if(j-1==0){
+							System.out.println("Félicitations! Niveau terminé");
+						}
+					
 					}
 				
 				}	
