@@ -49,6 +49,12 @@ public class Tests {
 		for(int j=2; j<=5; j++) {
 			d.placerObj(6,j,mur);
 		}
+		for(int i=3; i<=4; i++) {
+			d.placerObj(i,3,mur);
+		}
+		for(int i=7; i<=11; i++) {
+			d.placerObj(i,5,mur);
+		}
 		
 		d.placerObj(2,7,mur);
 		d.placerObj(3,7,mur);
@@ -60,40 +66,74 @@ public class Tests {
 		d.placerObj(2,5,mur);
 		d.placerObj(2,4,mur);
 		d.placerObj(4,6,mur);
+		d.placerObj(12,8,piege);
+		d.placerObj(3,6,piege);
+		d.placerObj(14,4,potion);
 		
-		System.out.println("Légende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
+		System.out.println("Règles du jeu : 4 déplacements maximum par tout autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
 		
 		d.afficher();
 		
-		//System.out.println( "Test getter getCase(4,7) : " + d.getCase(4,7) + "\nDone\n");
+		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
-		for (int manche=0;manche<=50;manche++) {
-			System.out.println("Veuillez communiquer vos 4 prochains déplacements : ");
-			Scanner sc = new Scanner(System.in);
-			String com = sc.next();
-			System.out.println("Vous avez tapé : " + com + "\n");
+		boolean b=false;
+		
+		for (int manche=0;manche<=10;manche++) {
 			
-			if(com.length() == 4) {
-				for(int i=0;i<=com.length()-1;i++) {
-					if(com.charAt(i) == 'z') {
-						d.move(X,"Up");
+			if(b==false) {
+				
+				System.out.println("Veuillez communiquer vos 4 prochains déplacements : ");
+				Scanner sc = new Scanner(System.in);
+				String com = sc.next();
+				System.out.println("Vous avez tapé : " + com + "\n");
+				
+				if(com.length() <= 4 ) {
+					for(int j=0;j<=com.length()-1;j++) {
+						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z') {
+							System.err.print("Mauvaise commande, veuillez rééssayer \n");
+						}
 					}
-					if(com.charAt(i) == 's') {
-						d.move(X,"Down");
+					
+					for(int i=0;i<=com.length()-1;i++) {
+						if(com.charAt(i) == 'z') {
+							d.move(X,"Up");
+						}
+						if(com.charAt(i) == 's') {
+							d.move(X,"Down");
+						}
+						if(com.charAt(i) == 'd') {
+							d.move(X,"Right");
+						}
+						if(com.charAt(i) == 'q') {
+							d.move(X,"Left");
+						}
+						
+					if(b==false) {
+						for(int x=0;x<d.getLongueur()-1;x++) {
+							for(int y=0;y<d.getLargeur()-1;y++) {
+								if(d.getCase(0, y)==X.getPerso() || d.getCase(d.getLongueur()-1, y)==X.getPerso() || d.getCase(x, 0)==X.getPerso() || d.getCase(x, d.getLargeur()-1)==X.getPerso()){
+									b=true;	
+								}
+							}
+						}
 					}
-					if(com.charAt(i) == 'd') {
-						d.move(X,"Right");
+					
+					if(b==true) {
+						
+						System.out.println("Félicitations! Niveau terminé \n");				
+						
 					}
-					if(com.charAt(i) == 'q') {
-						d.move(X,"Left");
-					}
+					
+				}
+										
+				}
+				
+				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
+		
+				d.afficher();
+				
 			}
-			
-			}
-			else System.err.print("On a dit 4 \n");
-			
-			d.afficher();
-			
+					
 		}
 		
 		/*d.moveUp(X);

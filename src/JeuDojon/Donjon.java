@@ -18,7 +18,7 @@ public class Donjon {
 	
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				donjon[i][j]='-';
+				donjon[i][j]=' ';
 			}
 		}
 	}	
@@ -47,9 +47,9 @@ public class Donjon {
 
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				System.out.print("  "+ donjon[i][j]);
+				System.out.print(" "+ donjon[i][j]);
 			}
-			System.out.println("\n");
+			System.out.println();
 		}
 		System.out.println();
 	}
@@ -64,7 +64,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='-') {
+			if(donjon[x][y]==' ') {
 				donjon[x][y]='#';
 			}
 		}
@@ -73,7 +73,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='-') {
+			if(donjon[x][y]==' ') {
 				donjon[x][y]='P';
 			}
 		}
@@ -82,7 +82,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='-') {
+			if(donjon[x][y]==' ') {
 				donjon[x][y]='§';
 			}
 		}		
@@ -98,7 +98,7 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				System.err.print("Hors map");
 			}
-			if(donjon[x][y]=='-') {
+			if(donjon[x][y]==' ') {
 				donjon[x][y]=p.getPerso();
 			}
 		}
@@ -116,48 +116,45 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					//On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 					if (donjon[i][j]== P.getPerso()) {
-						if(i-1>0 && donjon[i-1][j]!='#') {
-							donjon[i][j] = '-';
+						if(i-1>=0 && donjon[i-1][j]!='#') {
+							donjon[i][j] = ' ';
 							donjon[i-1][j] = P.getPerso();
 						}
-						if(i-1==0){
-							System.out.println("Félicitations! Niveau terminé");
-						}
-						
+
 					}
 				
 				}	
 			}
 		}
 		if(direction.equalsIgnoreCase("Down")) {
+			boolean b=true;
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
-					if (donjon[i][j]== P.getPerso()) {
-						if(i+1<longueur && donjon[i+1][j]!='#') {
-							donjon[i][j] = '-';
+					if (donjon[i][j]== P.getPerso() && b==true) {
+						if(i+1<=longueur && donjon[i+1][j]!='#') {
+							donjon[i][j] = ' ';
 							donjon[i+1][j] = P.getPerso();
 						}
-						if(i+1==longueur){
-							System.out.println("Félicitations! Niveau terminé");
-						}
-					
+						
+						b=false;
+						
 					}
 				
 				}	
 			}
 		}
 		if(direction.equalsIgnoreCase("Right")) {
+			boolean b =true;
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
-					if (donjon[i][j]== P.getPerso()) {
-						if(j+1<largeur && donjon[i][j+1]!='#') {
-							donjon[i][j] = '-';
+					if (donjon[i][j]== P.getPerso() && b==true) {
+						if(j+1<=largeur && donjon[i][j+1]!='#') {
+							donjon[i][j] = ' ';
 							donjon[i][j+1] = P.getPerso();
 						}
-						if(i+1==largeur){
-							System.out.println("Félicitations! Niveau terminé");
-						}
-					
+						
+						b=false;
+				
 					}
 				
 				}	
@@ -167,14 +164,11 @@ public class Donjon {
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso()) {
-						if(j-1>0 && donjon[i][j-1]!='#') {
-							donjon[i][j] = '-';
+						if(j-1>=0 && donjon[i][j-1]!='#') {
+							donjon[i][j] = ' ';
 							donjon[i][j-1] = P.getPerso();
 						}
-						if(j-1==0){
-							System.out.println("Félicitations! Niveau terminé");
-						}
-					
+			
 					}
 				
 				}	
