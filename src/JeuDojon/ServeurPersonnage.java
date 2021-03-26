@@ -18,11 +18,21 @@ public class ServeurPersonnage extends Thread{
 		
 		public void run(){
 			try {
+				in = new BufferedReader(
+				          new InputStreamReader(socket.getInputStream())
+				          );
+					
+					out = new PrintStream(socket.getOutputStream());
+					
+					//envoi du premier message
+					out.println("SERVEUR : en attente de requÃªte");
+					
+				
 				Personnage X = new Personnage(10,10,'X'); 
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet('#');
 				Objet potion = new Objet('P');
-				Objet piege = new Objet('§');
+				Objet piege = new Objet('ï¿½');
 				Personnage M = new Monstres(5,5,'M'); 
 				d.placerPerso(2,8,X);
 				
