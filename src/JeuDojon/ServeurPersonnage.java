@@ -2,7 +2,6 @@ package JeuDojon;
 
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
 
 public class ServeurPersonnage extends Thread{
 		
@@ -32,7 +31,7 @@ public class ServeurPersonnage extends Thread{
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet('#');
 				Objet potion = new Objet('P');
-				Objet piege = new Objet('ï¿½');
+				Objet piege = new Objet('§');
 				Personnage M = new Monstres(5,5,'M'); 
 				d.placerPerso(2,8,X);
 				
@@ -92,11 +91,6 @@ public class ServeurPersonnage extends Thread{
 				d.placerObj(3,6,piege);
 				d.placerObj(14,4,potion);
 				
-				System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
-				
-				d.afficher();
-				
-				//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 				
 				boolean b=false;
 				
@@ -104,10 +98,9 @@ public class ServeurPersonnage extends Thread{
 					
 					if(b==false) {
 						
-						System.out.println("Veuillez communiquer vos 4 prochains dï¿½placements : ");
-						Scanner sc = new Scanner(System.in);
-						String com = sc.next();
-						System.out.println("Vous avez tapï¿½ : " + com + "\n");
+						out.println("Veuillez communiquer vos 4 prochains dï¿½placements : ");
+						String com = in.readLine();
+						out.println("Vous avez tapï¿½ : " + com + "\n");
 						
 						if(com.length() <= 4 ) {
 							for(int j=0;j<=com.length()-1;j++) {
@@ -142,7 +135,7 @@ public class ServeurPersonnage extends Thread{
 							
 							if(b==true) {
 								
-								System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");				
+								out.println("Fï¿½licitations! Niveau terminï¿½ \n");				
 								
 							}
 							
@@ -150,12 +143,12 @@ public class ServeurPersonnage extends Thread{
 												
 						}
 						
-						else System.err.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
+						else out.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
 				
 						d.afficher();
 						
 					}
-							
+												
 				}
 			
 			
