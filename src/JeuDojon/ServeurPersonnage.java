@@ -22,7 +22,7 @@ public class ServeurPersonnage extends Thread{
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet('#');
 				Objet potion = new Objet('P');
-				Objet piege = new Objet('ï¿½');
+				Objet piege = new Objet('§');
 				Personnage M = new Monstres(5,5,'M'); 
 				d.placerPerso(2,8,X);
 				

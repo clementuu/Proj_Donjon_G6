@@ -12,7 +12,7 @@ public class Client {
 	
 	public static void main(String args[]) throws UnknownHostException, IOException{
 		
-		Socket socket= new Socket ("127.0.0.1", 6516);
+		Socket socket= new Socket ("127.0.0.1", 6112);
 		
 		System.out.println("Bienvenue");
 		System.out.println("Règles du jeu : 4 déplacements maximum par tout autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
