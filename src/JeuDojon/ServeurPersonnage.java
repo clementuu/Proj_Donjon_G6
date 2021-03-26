@@ -147,15 +147,7 @@ public class ServeurPersonnage extends Thread{
 					}
 							
 				}
-				
-				/*d.moveUp(X);
-				d.afficher();
-				d.moveLeft(X);
-				d.moveLeft(X);
-				d.afficher();
-				d.moveDown(X);
-				d.afficher();
-				d.moveRight(X); */
+			
 			
 			socket.close();
 			
