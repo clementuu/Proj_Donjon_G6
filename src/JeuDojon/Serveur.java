@@ -33,7 +33,7 @@ public class Serveur {
 						clientNo++;
 						
 						//création du nouveau thread en passant le socket comme parametre
-						Personnage personnage = new Personnage(10,10,'X');
+						ServeurPersonnage game = new ServeurPersonnage(client);
 						//démarrage 
 						game.start();
 						System.out.println("client "+clientNo+" servi");
