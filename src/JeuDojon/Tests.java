@@ -74,6 +74,8 @@ public class Tests {
 		
 		d.afficher();
 		
+		d.vueClient(X);
+		
 		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
 		boolean b=false;

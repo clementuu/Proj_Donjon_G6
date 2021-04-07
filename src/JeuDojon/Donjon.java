@@ -54,6 +54,27 @@ public class Donjon {
 		System.out.println();
 	}
 	
+	public void vueClient(Personnage P) {
+
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				if (donjon[i-1][j]== P.getPerso()) {
+					System.out.print(" "+ donjon[i][j-1] + " "+ donjon[i][j] + " "+ donjon[i][j+1]);
+						}
+				if (donjon[i][j]== P.getPerso()) {
+					System.out.print(" "+ donjon[i][j-1] + " "+ donjon[i][j] + " "+ donjon[i][j+1]);
+					}
+				if (donjon[i+1][j]== P.getPerso()) {
+					System.out.print(" "+ donjon[i][j-1] + " "+ donjon[i][j] + " "+ donjon[i][j+1]);
+					}
+				else
+					System.out.print(" "+ '~');
+			}		
+			System.out.println();
+		}
+		System.out.println();
+	}
+	
 	public void placerObj(int x, int y, Objet p) {
 		
 		x = x-1; //ça permet placer les objets et perso en (1,1) au lieu de (0,0) c'est plus intuitif
