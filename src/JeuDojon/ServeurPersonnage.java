@@ -3,7 +3,7 @@ package JeuDojon;
 import java.io.*;
 import java.net.*;
 
-public class ServeurPersonnage extends Thread{
+public class ServeurPersonnage extends Thread {
 		
 
 		private Socket socket;
@@ -156,7 +156,7 @@ public class ServeurPersonnage extends Thread{
 			
 			
 			
-		} catch (IOException e) {
+		} catch (IOException | ExceptionJeu e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

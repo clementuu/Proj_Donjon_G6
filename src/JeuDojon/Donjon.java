@@ -10,7 +10,7 @@ public class Donjon {
 	
 	//Constructeur
 	
-	public Donjon(int longueur,int largeur) {
+	public Donjon(int longueur,int largeur) throws ExceptionJeu  {
 		setLongueur(longueur);
 		setLargeur(largeur);
 		donjon=new char[longueur][largeur];
@@ -86,15 +86,15 @@ public class Donjon {
 								
 	
 	
-	public void placerObj(int x, int y, Objet p) {
+	public void placerObj(int x, int y, Objet p) throws ExceptionJeu{
 		
-		x = x-1; //ça permet placer les objets et perso en (1,1) au lieu de (0,0) c'est plus intuitif
+		x = x-1; //ï¿½a permet placer les objets et perso en (1,1) au lieu de (0,0) c'est plus intuitif
 		y = y-1;
 		
 		
 		if(p.getObjet()=='#') {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
-				System.err.print("Hors map");
+				throw new ExceptionJeu("Hors map");
 			}
 			if(donjon[x][y]==' ') {
 				donjon[x][y]='#';
@@ -103,7 +103,7 @@ public class Donjon {
 		
 		if(p.getObjet()=='P') {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
-				System.err.print("Hors map");
+				throw new ExceptionJeu("Hors map");
 			}
 			if(donjon[x][y]==' ') {
 				donjon[x][y]='P';
@@ -112,7 +112,7 @@ public class Donjon {
 		
 		if(p.getObjet()=='§') {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
-				System.err.print("Hors map");
+				throw new ExceptionJeu("Hors map");
 			}
 			if(donjon[x][y]==' ') {
 				donjon[x][y]='§';
@@ -121,14 +121,14 @@ public class Donjon {
 	
 	}
 	
-	public void placerPerso(int x, int y, Personnage p) {
+	public void placerPerso(int x, int y, Personnage p) throws ExceptionJeu {
 		
 		x = x-1;
 		y = y-1;
 		
 		if(p.getPerso()=='X' || p.getPerso()=='M') {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
-				System.err.print("Hors map");
+				throw new ExceptionJeu("Hors map");
 			}
 			if(donjon[x][y]==' ') {
 				donjon[x][y]=p.getPerso();
@@ -146,6 +146,8 @@ public class Donjon {
 			//On cherche l'avatar dans le tableau
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
+					//On anticipe le dï¿½placement et on regarde si la case sur laquelle on veut aller n'est pas un mur
+
 					if (donjon[i][j]== P.getPerso()) {
 						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 							donjon[i][j] = ' ';

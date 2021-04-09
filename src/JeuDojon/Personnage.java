@@ -12,9 +12,11 @@ public class Personnage extends Donjon{
 	private int attaque;
 	private char[][]vueJoueur;
 	
+	
 	//Constructeurs
 	
-	public Personnage(int vie, int longueur, int largeur) {
+
+	public Personnage(int vie, int longueur, int largeur) throws ExceptionJeu {
 		super(longueur,largeur);
 		setVie(vie);
 		vueJoueur=new char[longueur][largeur];
@@ -27,8 +29,9 @@ public class Personnage extends Donjon{
 		}
 	}		
 	
+
 	
-	public Personnage(int longueur, int largeur, int vie, int attaque) {
+	public Personnage(int longueur, int largeur, int vie, int attaque) throws ExceptionJeu {
 		super(longueur,largeur);
 		setVie(vie);
 		setAttaque(attaque);
@@ -42,7 +45,7 @@ public class Personnage extends Donjon{
 		}
 	}
 	
-	public Personnage(int longueur, int largeur, int vie, int attaque, char perso) {
+	public Personnage(int longueur, int largeur, int vie, int attaque, char perso) throws ExceptionJeu  {
 		super(longueur,largeur);
 		setVie(vie);
 		setAttaque(attaque);
@@ -58,7 +61,8 @@ public class Personnage extends Donjon{
 		
 	}
 	
-	public Personnage(int longueur, int largeur, List<Objet> inventaire) {
+
+	public Personnage(int longueur, int largeur, List<Objet> inventaire) throws ExceptionJeu {
 		super(longueur,largeur);
 		setInventaire(inventaire);
 		vueJoueur=new char[longueur][largeur];
@@ -83,7 +87,7 @@ public class Personnage extends Donjon{
 			this.vie = vie;
 		}
 		else
-			System.err.print("Vie du personnage trop faible ou trop élevée \n");
+			System.err.print("Vie du personnage trop faible ou trop ï¿½levï¿½e \n");
 	}
 
 	public List<Objet> getInventaire() {
