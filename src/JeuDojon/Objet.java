@@ -1,6 +1,6 @@
 package JeuDojon;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class Objet extends Personnage {
 	
@@ -9,10 +9,10 @@ public class Objet extends Personnage {
 	private char objet = 'o';
 	
 	//Constructeur
-	public Objet(ArrayList<Objet>[]inventaire) {
+	public Objet(List<Objet>inventaire) {
 		super(inventaire);
 	}
-	public Objet(char objet,ArrayList<Objet>[]inventaire) {
+	public Objet(char objet,List<Objet>inventaire) {
 		super(inventaire);
 		setObjet(objet);
 	}
