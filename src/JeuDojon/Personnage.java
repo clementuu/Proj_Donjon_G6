@@ -33,7 +33,7 @@ public class Personnage {
 	}
 	
 	//Geters et seters
-	
+
 	public int getVie() {
 		return vie;
 	}
