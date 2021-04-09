@@ -11,6 +11,8 @@ public class Personnage {
 	private ArrayList<Objet>[] inventaire;
 	private int attaque;
 	
+	ArrayList<Objet>[] inventaite = new ArrayList<Objet>[] inventaire;
+	
 	//Constructeurs
 	
 	public Personnage(int vie) {
@@ -43,7 +45,7 @@ public class Personnage {
 			this.vie = vie;
 		}
 		else
-			System.err.print("Vie du personnage trop faible ou trop élevée \n");
+			System.err.print("Vie du personnage trop faible ou trop ï¿½levï¿½e \n");
 	}
 
 	public ArrayList<Objet>[] getInventaire() {
@@ -80,7 +82,7 @@ public class Personnage {
 
 	public void ramasser(Objet p) {
 		if (p.getObjet()=='P') {
-			inventaire.add('P');
+			inventaire.add(p);
 		}
 		
 	}
