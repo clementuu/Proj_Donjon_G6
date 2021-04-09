@@ -28,7 +28,7 @@ public class Personnage {
 		setPerso(perso);
 	}
 	
-	public Personnage(ArrayList<Objet>[] inventaire) {
+	public Personnage(List<Objet> inventaire) {
 		setInventaire(inventaire);
 	}
 	
