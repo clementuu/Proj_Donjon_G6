@@ -55,25 +55,36 @@ public class Donjon {
 	}
 	
 	public void vueClient(Personnage P) {
+		
+		boolean b=false;
+		boolean ok=false;
 
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				if (donjon[i-1][j]== P.getPerso()) {
-					System.out.print(" "+ donjon[i][j-1] + " "+ donjon[i][j] + " "+ donjon[i][j+1]);
+				if(i>=1 && j>=1 && i<longueur-1 && j<largeur-1) {
+					b=true;
+				}
+				if (b==true && donjon[i][j]== P.getPerso()) {
+					for(int a=i;a<i+3;a++) {
+						for(int c=j;c<j+3;c++) {
+							System.out.print(" "+ donjon[a][c]);
 						}
-				if (donjon[i][j]== P.getPerso()) {
-					System.out.print(" "+ donjon[i][j-1] + " "+ donjon[i][j] + " "+ donjon[i][j+1]);
+						System.out.println();
 					}
-				if (donjon[i+1][j]== P.getPerso()) {
-					System.out.print(" "+ donjon[i][j-1] + " "+ donjon[i][j] + " "+ donjon[i][j+1]);
-					}
-				else
-					System.out.print(" "+ '~');
-			}		
+					System.out.println();
+					ok=true;
+				}
+				if(ok==false) {
+					System.out.print(" "+ "~");
+				}
+				b=false;
+			}
 			System.out.println();
 		}
 		System.out.println();
 	}
+								
+	
 	
 	public void placerObj(int x, int y, Objet p) {
 		

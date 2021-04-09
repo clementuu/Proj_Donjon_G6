@@ -28,6 +28,10 @@ public class Personnage {
 		setPerso(perso);
 	}
 	
+	public Personnage(ArrayList<Objet>[] inventaire) {
+		setInventaire(inventaire);
+	}
+	
 	//Geters et seters
 	
 	public int getVie() {
@@ -35,7 +39,7 @@ public class Personnage {
 	}
 
 	public void setVie(int vie) {
-		if(vie>=5 && vie<=20) {
+		if(vie>=0 && vie<=20) {
 			this.vie = vie;
 		}
 		else
@@ -55,7 +59,7 @@ public class Personnage {
 	}
 
 	public void setAttaque(int attaque) {
-		if(attaque>=1 && attaque<=10) {
+		if(attaque>=0 && attaque<=10) {
 			this.attaque = attaque;
 		}
 		else
@@ -74,5 +78,11 @@ public class Personnage {
 			System.err.print("Personnage inconnu \n");
 	}
 
+	public void ramasser(Objet p) {
+		if (p.getObjet()=='P') {
+			inventaire.add('P');
+		}
+		
+	}
 	
 }

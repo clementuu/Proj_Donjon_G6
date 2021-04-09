@@ -1,12 +1,10 @@
 package JeuDojon;
 
-public class Monstres extends Personnage {
+public class Monstres  {
 	
-	//Essayez de trouver des idées d'attributs à rajouter au monstres on pourrait aussi les faire se deplacer 
+	//Essayez de trouver des idées d'attributs on pourrait aussi les faire se deplacer 
 	
-	public Monstres(int vie, int attaque,char perso) {
-		super(vie, attaque, perso);
 	}
 	
 	
-}
+

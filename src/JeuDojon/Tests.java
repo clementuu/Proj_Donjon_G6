@@ -8,13 +8,13 @@ public class Tests {
 		
 		Personnage X = new Personnage(10,10,'X'); 
 		Donjon d = new Donjon(15,10);
-		Objet mur = new Objet('#');
-		Objet potion = new Objet('P');
-		Objet piege = new Objet('§');
-		Personnage M = new Monstres(5,5,'M'); 
+		Objet mur = new Objet('#',0,0);
+		Objet potion = new Objet('P',5,0);
+		Objet piege = new Objet('§',0,5);
+		//Monstres M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
 		
-		d.placerPerso(14,9,M);
+		//d.placerPerso(14,9,M);
 		
 		for(int i=1; i<=10; i++) {
 			d.placerObj(i,1,mur);
