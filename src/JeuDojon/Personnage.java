@@ -2,7 +2,7 @@ package JeuDojon;
 
 import java.util.*;
 
-public class Personnage {
+public class Personnage extends Donjon{
 	
 	//Attributs
 	
@@ -10,27 +10,67 @@ public class Personnage {
 	private int vie;
 	private List<Objet> inventaire = new ArrayList<Objet>();
 	private int attaque;
+	private char[][]vueJoueur;
 	
 	//Constructeurs
 	
-	public Personnage(int vie) {
+	public Personnage(int vie, int longueur, int largeur) {
+		super(longueur,largeur);
 		setVie(vie);
-	}
+		vueJoueur=new char[longueur][largeur];
+		
+		
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				vueJoueur[i][j]='~';
+			}
+		}
+	}		
 	
-	public Personnage(int vie,int attaque) {
+	
+	public Personnage(int longueur, int largeur, int vie, int attaque) {
+		super(longueur,largeur);
 		setVie(vie);
 		setAttaque(attaque);
+		vueJoueur=new char[longueur][largeur];
+		
+		
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				vueJoueur[i][j]='~';
+			}
+		}
 	}
 	
-	public Personnage(int vie,int attaque,char perso) {
+	public Personnage(int longueur, int largeur, int vie, int attaque, char perso) {
+		super(longueur,largeur);
 		setVie(vie);
 		setAttaque(attaque);
 		setPerso(perso);
+		vueJoueur=new char[longueur][largeur];
+		
+		
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				vueJoueur[i][j]='~';
+			}
+		}
+		
 	}
 	
-	public Personnage(List<Objet> inventaire) {
+	public Personnage(int longueur, int largeur, List<Objet> inventaire) {
+		super(longueur,largeur);
 		setInventaire(inventaire);
+		vueJoueur=new char[longueur][largeur];
+		
+		
+		for(int i=0;i<longueur;i++) {
+			for(int j=0;j<largeur;j++) {
+				vueJoueur[i][j]='~';
+			}
+		}
 	}
+		
 	
 	//Geters et seters
 
@@ -78,11 +118,20 @@ public class Personnage {
 			System.err.print("Personnage inconnu \n");
 	}
 
+	public char[][] getVueJoueur() {
+		return vueJoueur;
+	}
+
+	public void setVueJoueur(char[][] vueJoueur) {
+		this.vueJoueur = vueJoueur;
+	}
+	
+
 	public void ramasser(Objet p) {
 		if (p.getObjet()=='P') {
 			inventaire.add(p);
 		}
 		
 	}
-	
+
 }

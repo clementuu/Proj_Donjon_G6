@@ -74,10 +74,10 @@ public class Donjon {
 					System.out.println();
 					ok=true;
 				}
-				if(ok==false) {
+				//if(ok==false) {
 					System.out.print(" "+ "~");
-				}
-				b=false;
+				//}
+				//b=false;
 			}
 			System.out.println();
 		}
@@ -146,9 +146,8 @@ public class Donjon {
 			//On cherche l'avatar dans le tableau
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
-					//On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 					if (donjon[i][j]== P.getPerso()) {
-						if(i-1>=0 && donjon[i-1][j]!='#') {
+						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 							donjon[i][j] = ' ';
 							donjon[i-1][j] = P.getPerso();
 						}

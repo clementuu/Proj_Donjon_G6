@@ -10,14 +10,14 @@ public class Objet extends Personnage {
 	
 	//Constructeur
 	public Objet(List<Objet>inventaire) {
-		super(inventaire);
+		super(0, 0, inventaire);
 	}
 	public Objet(char objet,List<Objet>inventaire) {
-		super(inventaire);
+		super(0, 0, inventaire);
 		setObjet(objet);
 	}
 	public Objet(char objet, int vie, int attaque) {
-		super(vie,attaque);
+		super(vie, 0, 0);
 		setObjet(objet);
 	}
 	
