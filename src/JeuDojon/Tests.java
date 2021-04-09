@@ -4,13 +4,13 @@ import java.util.*;
 
 public class Tests {
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ExceptionJeu {
 		
 		Personnage X = new Personnage(10,10,'X'); 
 		Donjon d = new Donjon(15,10);
 		Objet mur = new Objet('#',0,0);
 		Objet potion = new Objet('P',5,0);
-		Objet piege = new Objet('§',0,5);
+		Objet piege = new Objet('ï¿½',0,5);
 		//Monstres M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
 		
@@ -70,7 +70,7 @@ public class Tests {
 		d.placerObj(3,6,piege);
 		d.placerObj(14,4,potion);
 		
-		System.out.println("Règles du jeu : 4 déplacements maximum par tout autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
+		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
 		
 		d.afficher();
 		
@@ -84,15 +84,15 @@ public class Tests {
 			
 			if(b==false) {
 				
-				System.out.println("Veuillez communiquer vos 4 prochains déplacements : ");
+				System.out.println("Veuillez communiquer vos 4 prochains dï¿½placements : ");
 				Scanner sc = new Scanner(System.in);
 				String com = sc.next();
-				System.out.println("Vous avez tapé : " + com + "\n");
+				System.out.println("Vous avez tapï¿½ : " + com + "\n");
 				
 				if(com.length() <= 4 ) {
 					for(int j=0;j<=com.length()-1;j++) {
 						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z') {
-							System.err.print("Mauvaise commande, veuillez rééssayer \n");
+							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
 						}
 					}
 					
@@ -122,7 +122,7 @@ public class Tests {
 					
 					if(b==true) {
 						
-						System.out.println("Félicitations! Niveau terminé \n");				
+						System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");				
 						
 					}
 					
@@ -130,7 +130,7 @@ public class Tests {
 										
 				}
 				
-				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
+				else System.err.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
 		
 				d.afficher();
 				

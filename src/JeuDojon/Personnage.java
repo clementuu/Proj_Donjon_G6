@@ -11,26 +11,25 @@ public class Personnage {
 	private List<Objet> inventaire = new ArrayList<Objet>();
 	private int attaque;
 	
-	ArrayList<Objet>[] inventaite = new ArrayList<Objet>[] inventaire;
 	
 	//Constructeurs
 	
-	public Personnage(int vie) {
+	public Personnage(int vie) throws ExceptionJeu  {
 		setVie(vie);
 	}
 	
-	public Personnage(int vie,int attaque) {
+	public Personnage(int vie,int attaque) throws ExceptionJeu {
 		setVie(vie);
 		setAttaque(attaque);
 	}
 	
-	public Personnage(int vie,int attaque,char perso) {
+	public Personnage(int vie,int attaque,char perso) throws ExceptionJeu  {
 		setVie(vie);
 		setAttaque(attaque);
 		setPerso(perso);
 	}
 	
-	public Personnage(List<Objet> inventaire) {
+	public Personnage(List<Objet> inventaire) throws ExceptionJeu {
 		setInventaire(inventaire);
 	}
 	
