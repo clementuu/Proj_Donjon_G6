@@ -8,7 +8,7 @@ public class Personnage extends Donjon{
 	
 	private char perso = 'X';
 	private int vie;
-	private List<Objet> inventaire = new ArrayList<Objet>();
+	private ArrayList<Objet> inventaire = new ArrayList<Objet>();
 	private int attaque;
 	private char[][]vueJoueur;
 	
@@ -58,11 +58,10 @@ public class Personnage extends Donjon{
 				vueJoueur[i][j]='~';
 			}
 		}
-		
 	}
 	
 
-	public Personnage(int longueur, int largeur, List<Objet> inventaire) throws ExceptionJeu {
+	public Personnage(int longueur, int largeur, ArrayList<Objet> inventaire) throws ExceptionJeu {
 		super(longueur,largeur);
 		setInventaire(inventaire);
 		vueJoueur=new char[longueur][largeur];
@@ -90,11 +89,11 @@ public class Personnage extends Donjon{
 			System.err.print("Vie du personnage trop faible ou trop �lev�e \n");
 	}
 
-	public List<Objet> getInventaire() {
+	public ArrayList<Objet> getInventaire() {
 		return inventaire;
 	}
 
-	public void setInventaire(List<Objet> inventaire) {
+	public void setInventaire(ArrayList<Objet> inventaire) {
 		this.inventaire = inventaire;
 	}
 
@@ -131,11 +130,36 @@ public class Personnage extends Donjon{
 	}
 	
 
-	public void ramasser(Objet p) {
-		if (p.getObjet()=='P') {
+	public void ramasser(Donjon d, Personnage P, Objet p) throws ExceptionJeu {
+		if(p.getObjet()=="P") {
 			inventaire.add(p);
 		}
+		else throw new ExceptionJeu("Objet inconnu");
+	}
+	
+	public void afficherVueJ(Donjon d) {
+
+		for(int i=0;i<d.getLongueur();i++) {
+			for(int j=0;j<d.getLargeur();j++) {
+				System.out.print(" "+ vueJoueur[i][j]);
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+	
+	public ArrayList<Objet>affInventaire() {
+		System.out.println("Inventaire : ");
+		for (int i=0;i<inventaire.size();i++) {
+			System.out.print(inventaire.get(i).getObjet() + " ");
+		}
+		System.out.println();
+		return inventaire;
+		
+		
 		
 	}
-
+	
 }
+
+	

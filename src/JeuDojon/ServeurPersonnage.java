@@ -110,16 +110,16 @@ public class ServeurPersonnage extends Thread {
 							
 							for(int i=0;i<=com.length()-1;i++) {
 								if(com.charAt(i) == 'z') {
-									d.move(X,"Up");
+									d.move(d,X,"Up");
 								}
 								if(com.charAt(i) == 's') {
-									d.move(X,"Down");
+									d.move(d,X,"Down");
 								}
 								if(com.charAt(i) == 'd') {
-									d.move(X,"Right");
+									d.move(d,X,"Right");
 								}
 								if(com.charAt(i) == 'q') {
-									d.move(X,"Left");
+									d.move(d,X,"Left");
 								}
 								
 							if(b==false) {
