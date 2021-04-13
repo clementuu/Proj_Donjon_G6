@@ -71,7 +71,11 @@ public class Tests {
 		d.placerObj(14,4,potion);
 		
 		System.out.println("Règles du jeu : 4 déplacements maximum par tout autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
-		
+	
+		X.affInventaire();
+	    System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
+		X.soin(X,X.getInventaire());
+		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
 		d.afficher();
 		X.affInventaire();
 		//d.vueClient(X);
@@ -92,7 +96,6 @@ public class Tests {
 				System.out.println("Vous avez tapé : " + com + "\n");
 				
 				if(com.length() <= 5 ) {
-					boolean ramassé=true;
 					for(int j=0;j<com.length()-1;j++) {
 						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n') {
 							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
@@ -104,11 +107,27 @@ public class Tests {
 					
 					
 					for(int i=0;i<=com.length()-1;i++) {
-						if(com.charAt(i) == 'z') {
+						boolean ramasser=false;
+						if(com.charAt(i) == 'z' && ramasser==false) {
+							for(int c=0;c<d.getLongueur();c++) {
+								for(int co=0;co<d.getLargeur();co++) {
+									if (d.getCase(c,co)== X.getPerso()) {
+										if(c-1>=0 && d.getCase(c-1, co)=='P') {
+											Objet p = new Objet("P",5,0);
+											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											if(com=="y") {
+												X.ramasser(d,X,p);
+												System.out.println("Potion ajouté à votre inventaire!");
+												ramasser=true;
+											}	
+										}
+									}
+								}
+							}
 							d.move(d,X,"Up");
 							
 						}
-						if(com.charAt(i) == 's' && ramassé==true) {
+						if(com.charAt(i) == 's' && ramasser==false) {
 							for(int ae=0;ae<d.getLongueur();ae++) {
 								for(int z=0;z<d.getLargeur();z++) {
 									if (d.getCase(ae,z)== X.getPerso()) {
@@ -118,20 +137,53 @@ public class Tests {
 											if(com=="y") {
 												X.ramasser(d,X,p);
 												System.out.println("Potion ajouté à votre inventaire!");
-											}
-											else 
-												ramassé=false;
+												ramasser=true;
+											}									
 										}
 									}
 								}
 							}
+							
 							d.move(d,X,"Down");
 						}
 						if(com.charAt(i) == 'd') {
+							for(int e=0;e<d.getLongueur();e++) {
+								for(int f=0;f<d.getLargeur();f++) {
+									if (d.getCase(e,f)== X.getPerso()) {
+										if(f+1<=d.getLargeur() && d.getCase(e,f+1)=='P') {
+											Objet p = new Objet("P",5,0);
+											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											if(com=="y") {
+												X.ramasser(d,X,p);
+												System.out.println("Potion ajouté à votre inventaire!");
+												ramasser=true;
+											}									
+										}
+									}
+								}
+							}
 							d.move(d,X,"Right");
 						}
 						if(com.charAt(i) == 'q') {
+							for(int j=0;j<d.getLongueur();j++) {
+								for(int k=0;k<d.getLargeur();k++) {
+									if (d.getCase(j,k)== X.getPerso()) {
+										if(k-1<=d.getLongueur() && d.getCase(j,k-1)=='P') {
+											Objet p = new Objet("P",5,0);
+											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											if(com=="y") {
+												X.ramasser(d,X,p);
+												System.out.println("Potion ajouté à votre inventaire!");
+												ramasser=true;
+											}									
+										}
+									}
+								}
+							}
 							d.move(d,X,"Left");
+						}
+						
+							
 						}
 						
 					if(b==false) {
@@ -158,6 +210,7 @@ public class Tests {
 		
 				d.afficher();
 				
+				
 			}
 
 		}
@@ -170,5 +223,5 @@ public class Tests {
 		d.moveDown(X);
 		d.afficher();
 		d.moveRight(X); */
-	}
 }
+
