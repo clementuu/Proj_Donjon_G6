@@ -16,7 +16,7 @@ public class Personnage extends Donjon{
 	//Constructeurs
 	
 
-	public Personnage(int vie, int longueur, int largeur) throws ExceptionJeu {
+	public Personnage(int longueur, int largeur,int vie) throws ExceptionJeu {
 		super(longueur,largeur);
 		setVie(vie);
 		vueJoueur=new char[longueur][largeur];
@@ -161,10 +161,50 @@ public class Personnage extends Donjon{
 			return inventaire;
 	}
 	
-	public void laisserPotion(int x, int y, Objet p) throws ExceptionJeu{
+	public void laisserPotion(int x, int y) throws ExceptionJeu{
 		if(vueJoueur[x][y]=='~') {
 			vueJoueur[x][y]='P';
 		}
+	}
+	
+	public void remplacerCase(int x,int y,Donjon d) throws ExceptionJeu {
+		
+		if(d.getCase(x, y)=='#') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]='#';
+			}
+		}
+		
+		if(d.getCase(x, y)=='P') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]='P';
+			}
+		}
+		
+		if(d.getCase(x,y)=='§') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]='§';
+			}
+		}
+		
+		if(d.getCase(x, y)==' ') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]=' ';
+			}
+		}
+			
 	}
 	
 	public void soin(Personnage P,ArrayList<Objet> inventaire) throws ExceptionJeu {

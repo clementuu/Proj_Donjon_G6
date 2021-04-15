@@ -6,7 +6,7 @@ public class Tests {
 	
 	public static void main(String[] args) throws ExceptionJeu {
 		
-		Personnage X = new Personnage(10,10,'X'); 
+		Personnage X = new Personnage(15,10,10,5,'X'); 
 		Donjon d = new Donjon(15,10);
 		Objet mur = new Objet("#",0,0);
 		Objet potion = new Objet("P",5,0);
@@ -78,8 +78,8 @@ public class Tests {
 		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
 		d.afficher();
 		X.affInventaire();
-		//d.vueClient(X);
-		//X.afficherVueJ(d);
+		
+		X.afficherVueJ(d);
 		
 		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
@@ -106,7 +106,7 @@ public class Tests {
 					}
 					
 					
-					for(int i=0;i<=com.length()-1;i++) {
+					for(int i=0;i<com.length()-1;i++) {
 						boolean ramasser=false;
 						if(com.charAt(i) == 'z' && ramasser==false) {
 							for(int c=0;c<d.getLongueur();c++) {
@@ -209,7 +209,7 @@ public class Tests {
 				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
 		
 				d.afficher();
-				
+				X.afficherVueJ(d);
 				
 			}
 
