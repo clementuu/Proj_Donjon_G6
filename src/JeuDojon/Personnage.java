@@ -222,6 +222,7 @@ public class Personnage extends Donjon{
 		}
 	}
 
+	//m
 	
 	public void degat(Personnage P, Donjon d) throws ExceptionJeu {
 		for (int i=0;i< vie;i++) {
@@ -229,6 +230,7 @@ public class Personnage extends Donjon{
 				P.vie=P.vie-P.getAttaque();
 				System.out.println("Degat \n +" + P.getAttaque());
 				inventaire.remove(i);
+				
 			}
 		}
 	}
