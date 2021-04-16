@@ -24,18 +24,24 @@ public class ServeurPersonnage extends Thread {
 					out = new PrintStream(socket.getOutputStream());
 					
 					//envoi du premier message
-					out.println("SERVEUR : en attente de requÃªte");
+					out.println("Escape The Donjon");
 					
 				
-				Personnage X = new Personnage(10,10,'X'); 
+				Personnage X = new Personnage(15,10,10,5,'X'); 
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet("#",0,0);
 				
 				
 				Objet potion = new Objet("P",5,0);
 
-				Objet piege = new Objet("ï¿½",0,5);
+				Objet potionSup = new Objet("P",10,0);
+				Objet piege = new Objet("§",1,5);
+				Objet piegeDemoniaque = new Objet("§",5,10);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
 				d.placerPerso(2,8,X);
 				
 				//d.placerPerso(14,9,M);
@@ -82,8 +88,8 @@ public class ServeurPersonnage extends Thread {
 				
 				d.placerObj(2,7,mur);
 				d.placerObj(3,7,mur);
-				d.placerObj(12,2,piege);
-				d.placerObj(6,9,potion);
+				d.placerObj(12,2,piegeDemoniaque);
+				d.placerObj(6,9,potionSup);
 				d.placerObj(10,6,piege);
 				d.placerObj(11,2,piege);
 				d.placerObj(5,3,potion);
@@ -149,6 +155,7 @@ public class ServeurPersonnage extends Thread {
 						else out.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
 				
 						d.afficher();
+						X.afficherVueJ(d, X);
 						
 					}
 												

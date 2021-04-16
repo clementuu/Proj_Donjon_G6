@@ -23,7 +23,7 @@ public class Client {
 		
 		System.out.println(in.readLine());
 		
-		for(int i=0;i<5;i++){
+		for(int i=0;i<1000;i++){
 			out.println(scanner.nextLine());
 			System.out.println(in.readLine());
 		}

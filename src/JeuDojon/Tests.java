@@ -10,7 +10,10 @@ public class Tests {
 		Donjon d = new Donjon(15,10);
 		Objet mur = new Objet("#",0,0);
 		Objet potion = new Objet("P",5,0);
-		Objet piege = new Objet("ï¿½",0,5);
+		Objet potionSup = new Objet("P",10,0);
+		Objet piege = new Objet("§",1,5);
+		Objet piegeDemoniaque = new Objet("§",5,10);
+
 		//Monstres M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
 		
@@ -58,8 +61,8 @@ public class Tests {
 		X.ramasser(d, X, potion);
 		d.placerObj(2,7,mur);
 		d.placerObj(3,7,mur);
-		d.placerObj(12,2,piege);
-		d.placerObj(6,9,potion);
+		d.placerObj(12,2,piegeDemoniaque);
+		d.placerObj(6,9,potionSup);
 		d.placerObj(10,6,piege);
 		d.placerObj(11,2,piege);
 		d.placerObj(5,3,potion);
