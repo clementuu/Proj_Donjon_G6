@@ -153,6 +153,20 @@ public class ServeurPersonnage extends Thread {
 						d.afficher();
 						X.afficherVueJ(d, X);
 						
+						/**
+						 * for(int i=0;i<d.getLongueur();i++) {
+							for(int j=0;j<d.getLargeur();j++) {
+								if(d.getCase(i, j)==X.getPerso()) {
+									vueJoueur[i][j]==X.getPerso();
+								}
+								out.print(" "+ vueJoueur[i][j]);
+							}
+							out.println();
+						}
+						out.println();
+						
+						 */
+						
 					}
 												
 				}
