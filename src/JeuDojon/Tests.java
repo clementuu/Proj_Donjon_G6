@@ -13,6 +13,7 @@ public class Tests {
 		Objet potionSup = new Objet("P",10,0);
 		Objet piege = new Objet("§",1,5);
 		Objet piegeDemoniaque = new Objet("§",5,10);
+
 		//Monstres M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
 		
@@ -72,12 +73,17 @@ public class Tests {
 		d.placerObj(3,6,piege);
 		d.placerObj(14,4,potion);
 		
-		System.out.println("Règles du jeu : 4 déplacements maximum par tout autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
+
+		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
+		
+
+		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
 	
 		X.affInventaire();
 	    System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
 		X.soin(X,X.getInventaire());
 		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
+
 		d.afficher();
 		X.affInventaire();
 		
@@ -92,12 +98,15 @@ public class Tests {
 			
 			if(b==false) {
 				
-				System.out.println("Veuillez communiquer au maximum 4 déplacements : ");
+				System.out.println("Veuillez communiquer au maximum 4 dï¿½placements : ");
 				Scanner sc = new Scanner(System.in);
 				String com = sc.next();
-				System.out.println("Vous avez tapé : " + com + "\n");
+				System.out.println("Vous avez tapï¿½ : " + com + "\n");
 				
 				if(com.length() <= 5 ) {
+
+					boolean ramasse=true;
+
 					for(int j=0;j<com.length()-1;j++) {
 						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n') {
 							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
@@ -115,10 +124,10 @@ public class Tests {
 									if (d.getCase(c,co)== X.getPerso()) {
 										if(c-1>=0 && d.getCase(c-1, co)=='P') {
 											Objet p = new Objet("P",5,0);
-											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											System.out.println("Vous avez trouvï¿½ une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
 											if(com=="y") {
 												X.ramasser(d,X,p);
-												System.out.println("Potion ajouté à votre inventaire!");
+												System.out.println("Potion ajoutï¿½ ï¿½ votre inventaire!");
 												ramasser=true;
 											}	
 										}
@@ -127,18 +136,29 @@ public class Tests {
 							}
 							d.move(d,X,"Up");							
 						}
+
+						if(com.charAt(i) == 's' && ramasse==true) {
+
 						if(com.charAt(i) == 's' && ramasser==false) {
+
 							for(int ae=0;ae<d.getLongueur();ae++) {
 								for(int z=0;z<d.getLargeur();z++) {
 									if (d.getCase(ae,z)== X.getPerso()) {
 										if(ae+1<=d.getLongueur() && d.getCase(ae+1,z)=='P') {
 											Objet p = new Objet("P",5,0);
-											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											System.out.println("Vous avez trouvï¿½ une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
 											if(com=="y") {
 												X.ramasser(d,X,p);
-												System.out.println("Potion ajouté à votre inventaire!");
+
+												System.out.println("Potion ajoutï¿½ ï¿½ votre inventaire!");
+											}
+											else 
+												ramasse=false;
+
+												System.out.println("Potion ajoutï¿½ ï¿½ votre inventaire!");
 												ramasser=true;
 											}									
+
 										}
 									}
 								}
@@ -152,10 +172,10 @@ public class Tests {
 									if (d.getCase(e,f)== X.getPerso()) {
 										if(f+1<=d.getLargeur() && d.getCase(e,f+1)=='P') {
 											Objet p = new Objet("P",5,0);
-											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											System.out.println("Vous avez trouvï¿½ une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
 											if(com=="y") {
 												X.ramasser(d,X,p);
-												System.out.println("Potion ajouté à votre inventaire!");
+												System.out.println("Potion ajoutï¿½ ï¿½ votre inventaire!");
 												ramasser=true;
 											}									
 										}
@@ -170,10 +190,10 @@ public class Tests {
 									if (d.getCase(j,k)== X.getPerso()) {
 										if(k-1<=d.getLongueur() && d.getCase(j,k-1)=='P') {
 											Objet p = new Objet("P",5,0);
-											System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
+											System.out.println("Vous avez trouvï¿½ une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
 											if(com=="y") {
 												X.ramasser(d,X,p);
-												System.out.println("Potion ajouté à votre inventaire!");
+												System.out.println("Potion ajoutï¿½ ï¿½ votre inventaire!");
 												ramasser=true;
 											}									
 										}
@@ -198,7 +218,7 @@ public class Tests {
 					
 					if(b==true) {
 						
-						System.out.println("Félicitations! Niveau terminé \n");				
+						System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");				
 						sc.close();
 					}
 					
@@ -206,7 +226,7 @@ public class Tests {
 										
 				}
 				
-				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
+				else System.err.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
 		
 				d.afficher();
 				X.afficherVueJ(d,X);
