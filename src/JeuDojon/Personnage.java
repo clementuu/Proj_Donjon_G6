@@ -222,7 +222,7 @@ public class Personnage extends Donjon{
 		}
 	}
 
-	//m
+	//u
 	
 	public void degat(Personnage P, Donjon d) throws ExceptionJeu {
 		for (int i=0;i< vie;i++) {
