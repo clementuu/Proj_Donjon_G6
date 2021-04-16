@@ -31,7 +31,11 @@ public class ServeurPersonnage extends Thread {
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet("#",0,0);
 				Objet potion = new Objet("P",5,0);
+
 				Objet piege = new Objet("�",0,5);
+
+				Objet piege = new Objet("�",0,5);
+
 				d.placerPerso(2,8,X);
 				
 				//d.placerPerso(14,9,M);

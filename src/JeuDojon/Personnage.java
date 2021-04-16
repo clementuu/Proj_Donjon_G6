@@ -16,7 +16,7 @@ public class Personnage extends Donjon{
 	//Constructeurs
 	
 
-	public Personnage(int vie, int longueur, int largeur) throws ExceptionJeu {
+	public Personnage(int longueur, int largeur,int vie) throws ExceptionJeu {
 		super(longueur,largeur);
 		setVie(vie);
 		vueJoueur=new char[longueur][largeur];
@@ -137,10 +137,13 @@ public class Personnage extends Donjon{
 		else throw new ExceptionJeu("Objet inconnu");
 	}
 	
-	public void afficherVueJ(Donjon d) {
+	public void afficherVueJ(Donjon d,Personnage P) {
 
 		for(int i=0;i<d.getLongueur();i++) {
 			for(int j=0;j<d.getLargeur();j++) {
+				if(d.getCase(i, j)==P.getPerso()) {
+					vueJoueur[i][j]=P.getPerso();
+				}
 				System.out.print(" "+ vueJoueur[i][j]);
 			}
 			System.out.println();
@@ -148,16 +151,75 @@ public class Personnage extends Donjon{
 		System.out.println();
 	}
 	
-	public ArrayList<Objet>affInventaire() {
-		System.out.println("Inventaire : ");
-		for (int i=0;i<inventaire.size();i++) {
-			System.out.print(inventaire.get(i).getObjet() + " ");
+	public ArrayList<Objet>affInventaire() throws ExceptionJeu {
+		if(inventaire.size()<0) {
+			throw new ExceptionJeu("Inventaire plus que vide \n");
 		}
-		System.out.println();
-		return inventaire;
+		else
+			System.out.println("Inventaire : ");
+			for (int i=0;i<inventaire.size();i++) {
+				System.out.print(inventaire.get(i).getObjet() + " ");
+			}
+			System.out.println();
+			return inventaire;
+	}
+	
+	public void laisserPotion(int x, int y) throws ExceptionJeu{
+		if(vueJoueur[x][y]=='~') {
+			vueJoueur[x][y]='P';
+		}
+	}
+	
+	public void remplacerCase(int x,int y,Donjon d) throws ExceptionJeu {
 		
+		if(d.getCase(x, y)=='#') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]='#';
+			}
+		}
+	
+		if(d.getCase(x, y)=='P') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]='P';
+			}
+		}
 		
+		if(d.getCase(x,y)=='§') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]='§';
+			}
+		}
 		
+		if(d.getCase(x, y)==' ') {
+			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
+				vueJoueur[x][y]=' ';
+			}
+		}
+			
+	}
+	
+	
+	public void soin(Personnage P,ArrayList<Objet> inventaire) throws ExceptionJeu {
+		for (int i=0;i<inventaire.size();i++) {
+			if(inventaire.get(i).getObjet()=="P") {
+				P.vie=P.vie+inventaire.get(i).getVie();
+				System.out.println("Soins terminés \n +" + inventaire.get(i).getVie()+" PV ! ");
+				inventaire.remove(i);
+			}
+			else throw new ExceptionJeu("Vous n'avez pas de potion dans votre inventaire ! \n");
+		}
 	}
 	
 }

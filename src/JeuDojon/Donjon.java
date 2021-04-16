@@ -1,7 +1,5 @@
 package JeuDojon;
 
-import java.util.Scanner;
-
 public class Donjon {
 	
 	//Attributs
@@ -155,19 +153,10 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					//On anticipe le dï¿½placement et on regarde si la case sur laquelle on veut aller n'est pas une potion, on demande si le joueur veut la ramasser
 					if (donjon[i][j]== P.getPerso()) {
-						if(i-1>=0 && donjon[i-1][j]=='P') {
-							Scanner sc = new Scanner(System.in);
-							String com = sc.next();
-							Objet p = new Objet("P",5,0);
-							System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
-							if(com=="y") {
-								P.ramasser(d,P,p);
-							}
-							sc.close();
-						}
 						//On anticipe et on regarde si on ne va pas percuter un mur
 						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 							donjon[i][j] = ' ';
+							P.remplacerCase(i, j, d);
 							donjon[i-1][j] = P.getPerso();
 						}
 
@@ -183,6 +172,7 @@ public class Donjon {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(i+1<=longueur && donjon[i+1][j]!='#') {
 							donjon[i][j] = ' ';
+							P.remplacerCase(i, j, d);
 							donjon[i+1][j] = P.getPerso();
 						}
 						
@@ -199,8 +189,9 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(j+1<=largeur && donjon[i][j+1]!='#') {
-							donjon[i][j+1] = P.getPerso();
 							donjon[i][j] = ' ';
+							P.remplacerCase(i, j, d);
+							donjon[i][j+1] = P.getPerso();
 						}
 						
 						b=false;
@@ -214,18 +205,9 @@ public class Donjon {
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso()) {
-						if(j-1>=0 && donjon[i][j-1]=='P') {
-							Scanner sc = new Scanner(System.in);
-							String com = sc.next();
-							Objet p = new Objet("P",5,0);
-							System.out.println("Vous avez trouvé une potion, voulez vous la ramasser ? \ny : Oui\nn : Non");
-							if(com=="y") {
-								P.ramasser(d,P,p);
-							}
-							sc.close();
-						}
 						if(j-1>=0 && donjon[i][j-1]!='#') {
 							donjon[i][j] = ' ';
+							P.remplacerCase(i, j, d);
 							donjon[i][j-1] = P.getPerso();
 						}
 			
