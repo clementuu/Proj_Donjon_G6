@@ -190,12 +190,12 @@ public class Personnage extends Donjon{
 			}
 		}
 		
-		if(d.getCase(x,y)=='§') {
+		if(d.getCase(x,y)=='ï¿½') {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
 			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
-				vueJoueur[x][y]='§';
+				vueJoueur[x][y]='ï¿½';
 			}
 		}
 		
@@ -215,13 +215,21 @@ public class Personnage extends Donjon{
 		for (int i=0;i<inventaire.size();i++) {
 			if(inventaire.get(i).getObjet()=="P") {
 				P.vie=P.vie+inventaire.get(i).getVie();
-				System.out.println("Soins terminés \n +" + inventaire.get(i).getVie()+" PV ! ");
+				System.out.println("Soins terminï¿½s \n +" + inventaire.get(i).getVie()+" PV ! ");
 				inventaire.remove(i);
 			}
 			else throw new ExceptionJeu("Vous n'avez pas de potion dans votre inventaire ! \n");
 		}
 	}
-	
-}
 
 	
+	public void degat(Personnage P, Donjon d) throws ExceptionJeu {
+		for (int i=0;i< vie;i++) {
+			if(((Objet) P).getObjet()=="ï¿½") {
+				P.vie=P.vie-P.getAttaque();
+				System.out.println("Degat \n +" + P.getAttaque());
+				inventaire.remove(i);
+			}
+		}
+	}
+}
