@@ -10,6 +10,10 @@ public class Donjon {
 	
 	//Constructeur
 	
+	public Donjon(int longueur) {
+		setLongueur(longueur);
+	}
+	
 	public Donjon(int longueur,int largeur) throws ExceptionJeu  {
 		setLongueur(longueur);
 		setLargeur(largeur);

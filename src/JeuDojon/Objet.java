@@ -20,7 +20,7 @@ public class Objet extends Personnage {
 	}
 
 	public Objet(String objet, int vie, int attaque) throws ExceptionJeu {
-		super(vie, 0, 0);
+		super(0,vie, attaque);
 		setObjet(objet);
 	}
 	

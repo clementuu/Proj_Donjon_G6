@@ -14,19 +14,11 @@ public class Personnage extends Donjon{
 	
 	
 	//Constructeurs
-	
-
-	public Personnage(int longueur, int largeur,int vie) throws ExceptionJeu {
-		super(longueur,largeur);
+		
+	public Personnage(int longueur, int vie,int attaque) throws ExceptionJeu {
+		super(longueur);
 		setVie(vie);
-		vueJoueur=new char[longueur][largeur];
-		
-		
-		for(int i=0;i<longueur;i++) {
-			for(int j=0;j<largeur;j++) {
-				vueJoueur[i][j]='~';
-			}
-		}
+		setAttaque(attaque);
 	}		
 	
 
@@ -190,12 +182,12 @@ public class Personnage extends Donjon{
 			}
 		}
 		
-		if(d.getCase(x,y)=='ï¿½') {
+		if(d.getCase(x,y)=='§') {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
 			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
-				vueJoueur[x][y]='ï¿½';
+				vueJoueur[x][y]='§';
 			}
 		}
 		
@@ -224,14 +216,8 @@ public class Personnage extends Donjon{
 
 	//u
 	
-	public void degat(Personnage P, Donjon d) throws ExceptionJeu {
-		for (int i=0;i< vie;i++) {
-			if(((Objet) P).getObjet()=="ï¿½") {
-				P.vie=P.vie-P.getAttaque();
-				System.out.println("Degat \n +" + P.getAttaque());
-				inventaire.remove(i);
-				
-			}
-		}
+	public void degat(Personnage P, Donjon d, Objet o) throws ExceptionJeu {
+			P.vie=P.vie-o.getAttaque();
+			System.out.println("Degat \n -" + o.getAttaque()+" 5 PV !");				
 	}
 }

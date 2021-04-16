@@ -83,8 +83,9 @@ public class Tests {
 	    System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
 		X.soin(X,X.getInventaire());
 		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
-
-		d.afficher();
+		 X.degat(X, d, piege);
+		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
+		 d.afficher();
 		X.affInventaire();
 		
 		//X.afficherVueJ(d,X);
