@@ -137,10 +137,13 @@ public class Personnage extends Donjon{
 		else throw new ExceptionJeu("Objet inconnu");
 	}
 	
-	public void afficherVueJ(Donjon d) {
+	public void afficherVueJ(Donjon d,Personnage P) {
 
 		for(int i=0;i<d.getLongueur();i++) {
 			for(int j=0;j<d.getLargeur();j++) {
+				if(d.getCase(i, j)==P.getPerso()) {
+					vueJoueur[i][j]=P.getPerso();
+				}
 				System.out.print(" "+ vueJoueur[i][j]);
 			}
 			System.out.println();
@@ -177,7 +180,7 @@ public class Personnage extends Donjon{
 				vueJoueur[x][y]='#';
 			}
 		}
-		
+	
 		if(d.getCase(x, y)=='P') {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
@@ -206,6 +209,7 @@ public class Personnage extends Donjon{
 		}
 			
 	}
+	
 	
 	public void soin(Personnage P,ArrayList<Objet> inventaire) throws ExceptionJeu {
 		for (int i=0;i<inventaire.size();i++) {

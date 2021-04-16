@@ -1,6 +1,5 @@
 package JeuDojon;
 
-
 public class Donjon {
 	
 	//Attributs
@@ -190,9 +189,9 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(j+1<=largeur && donjon[i][j+1]!='#') {
-							donjon[i][j+1] = P.getPerso();
-							P.remplacerCase(i, j, d);
 							donjon[i][j] = ' ';
+							P.remplacerCase(i, j, d);
+							donjon[i][j+1] = P.getPerso();
 						}
 						
 						b=false;

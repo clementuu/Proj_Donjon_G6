@@ -79,14 +79,14 @@ public class Tests {
 		d.afficher();
 		X.affInventaire();
 		
-		X.afficherVueJ(d);
+		//X.afficherVueJ(d,X);
 		
 		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
 		boolean b=false;
 		
 		
-		for (int manche=0;manche<=10;manche++) {
+		for (int manche=0;manche<=20;manche++) {
 			
 			if(b==false) {
 				
@@ -100,14 +100,13 @@ public class Tests {
 						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n') {
 							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
 						}
-					}
-					if (com.charAt(com.length()-1)=='e') {
-						X.affInventaire();
-					}
+					}					
 					
-					
-					for(int i=0;i<com.length()-1;i++) {
+					for(int i=0;i<com.length();i++) {
 						boolean ramasser=false;
+						if (com.charAt(i)=='e') {
+							X.affInventaire();
+						}						
 						if(com.charAt(i) == 'z' && ramasser==false) {
 							for(int c=0;c<d.getLongueur();c++) {
 								for(int co=0;co<d.getLargeur();co++) {
@@ -124,8 +123,7 @@ public class Tests {
 									}
 								}
 							}
-							d.move(d,X,"Up");
-							
+							d.move(d,X,"Up");							
 						}
 						if(com.charAt(i) == 's' && ramasser==false) {
 							for(int ae=0;ae<d.getLongueur();ae++) {
@@ -209,8 +207,7 @@ public class Tests {
 				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
 		
 				d.afficher();
-				X.afficherVueJ(d);
-				
+				X.afficherVueJ(d,X);
 			}
 
 		}
