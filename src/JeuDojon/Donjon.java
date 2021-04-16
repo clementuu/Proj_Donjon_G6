@@ -147,7 +147,7 @@ public class Donjon {
 		return donjon[x][y];
 	}
 	
-	public void move(Donjon d, Personnage P, String direction) throws ExceptionJeu {
+	public void move(Donjon d, Personnage P, String direction, Objet o) throws ExceptionJeu {
 		
 		
 		
@@ -159,11 +159,18 @@ public class Donjon {
 					if (donjon[i][j]== P.getPerso()) {
 						//On anticipe et on regarde si on ne va pas percuter un mur
 						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
+							if(donjon[i-1][j]=='§') {
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P,d,o);
+							}
 							donjon[i][j] = ' ';
 							P.remplacerCase(i, j, d);
 							donjon[i-1][j] = P.getPerso();
 						}
-
+						if(i-1>=0 && donjon[i-1][j]=='#') {
+							P.remplacerCase(i-1, j, d);
+						}
+						
 					}
 				
 				}	
@@ -175,10 +182,18 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(i+1<=longueur && donjon[i+1][j]!='#') {
+							if(donjon[i+1][j]=='§') {	
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P, d, o);
+							}
 							donjon[i][j] = ' ';
 							P.remplacerCase(i, j, d);
 							donjon[i+1][j] = P.getPerso();
 						}
+						if(i+1<=longueur && donjon[i+1][j]=='#') {
+							P.remplacerCase(i+1, j, d);
+						}
+					
 						
 						b=false;
 						
@@ -193,10 +208,18 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(j+1<=largeur && donjon[i][j+1]!='#') {
+							if(donjon[i][j+1]=='§') {	
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P, d, o);
+							}
 							donjon[i][j] = ' ';
 							P.remplacerCase(i, j, d);
 							donjon[i][j+1] = P.getPerso();
 						}
+						if(j+1<=largeur && donjon[i][j+1]=='#') {
+							P.remplacerCase(i, j+1, d);
+						}
+					
 						
 						b=false;
 				
@@ -210,10 +233,18 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso()) {
 						if(j-1>=0 && donjon[i][j-1]!='#') {
+							if(donjon[i][j-1]=='§') {
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P,d,o);
+							}
 							donjon[i][j] = ' ';
 							P.remplacerCase(i, j, d);
 							donjon[i][j-1] = P.getPerso();
 						}
+						if(j-1>=0 && donjon[i][j-1]=='#') {
+							P.remplacerCase(i, j-1, d);
+						}
+						
 			
 					}
 				

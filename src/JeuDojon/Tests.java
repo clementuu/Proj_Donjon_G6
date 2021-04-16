@@ -82,10 +82,10 @@ public class Tests {
 		X.affInventaire();
 	    System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
 		X.soin(X,X.getInventaire());
-		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
-		 X.degat(X, d, piege);
-		 System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
-		 d.afficher();
+		System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
+		X.degat(X, d, piege);
+		System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso()+"\n");
+		d.afficher();
 		X.affInventaire();
 		
 		//X.afficherVueJ(d,X);
@@ -135,7 +135,7 @@ public class Tests {
 									}
 								}
 							}
-							d.move(d,X,"Up");							
+							d.move(d,X,"Up",piege);							
 						}
 
 						if(com.charAt(i) == 's' && ramasse==true) {
@@ -165,7 +165,7 @@ public class Tests {
 								}
 							}
 							
-							d.move(d,X,"Down");
+							d.move(d,X,"Down",piege);
 						}
 						if(com.charAt(i) == 'd') {
 							for(int e=0;e<d.getLongueur();e++) {
@@ -183,7 +183,7 @@ public class Tests {
 									}
 								}
 							}
-							d.move(d,X,"Right");
+							d.move(d,X,"Right",piege);
 						}
 						if(com.charAt(i) == 'q') {
 							for(int j=0;j<d.getLongueur();j++) {
@@ -201,7 +201,7 @@ public class Tests {
 									}
 								}
 							}
-							d.move(d,X,"Left");
+							d.move(d,X,"Left",piege);
 						}
 						
 							

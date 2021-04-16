@@ -38,10 +38,6 @@ public class ServeurPersonnage extends Thread {
 				Objet piege = new Objet("§",1,5);
 				Objet piegeDemoniaque = new Objet("§",5,10);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
 				d.placerPerso(2,8,X);
 				
 				//d.placerPerso(14,9,M);
@@ -120,16 +116,16 @@ public class ServeurPersonnage extends Thread {
 							
 							for(int i=0;i<=com.length()-1;i++) {
 								if(com.charAt(i) == 'z') {
-									d.move(d,X,"Up");
+									d.move(d,X,"Up",piege);
 								}
 								if(com.charAt(i) == 's') {
-									d.move(d,X,"Down");
+									d.move(d,X,"Down",piege);
 								}
 								if(com.charAt(i) == 'd') {
-									d.move(d,X,"Right");
+									d.move(d,X,"Right",piege);
 								}
 								if(com.charAt(i) == 'q') {
-									d.move(d,X,"Left");
+									d.move(d,X,"Left",piege);
 								}
 								
 							if(b==false) {
