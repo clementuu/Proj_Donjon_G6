@@ -19,7 +19,6 @@ public class Serveur {
 				ServerSocket s = null;
 				try {
 					
-					//Creation socket serveur
 					s = new ServerSocket(PORT);
 				}
 				catch(IOException e){
