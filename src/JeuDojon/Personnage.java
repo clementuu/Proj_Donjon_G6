@@ -6,11 +6,11 @@ public class Personnage extends Donjon{
 	
 	//Attributs
 	
-	private char perso = 'X';
+	private String perso;
 	private int vie;
 	private ArrayList<Objet> inventaire = new ArrayList<Objet>();
 	private int attaque;
-	private char[][]vueJoueur;
+	private String[][]vueJoueur;
 	
 	
 	//Constructeurs
@@ -27,27 +27,27 @@ public class Personnage extends Donjon{
 		super(longueur,largeur);
 		setVie(vie);
 		setAttaque(attaque);
-		vueJoueur=new char[longueur][largeur];
+		vueJoueur=new String[longueur][largeur];
 		
 		
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				vueJoueur[i][j]='~';
+				vueJoueur[i][j]="~";
 			}
 		}
 	}
 	
-	public Personnage(int longueur, int largeur, int vie, int attaque, char perso) throws ExceptionJeu  {
+	public Personnage(int longueur, int largeur, int vie, int attaque, String perso) throws ExceptionJeu  {
 		super(longueur,largeur);
 		setVie(vie);
 		setAttaque(attaque);
 		setPerso(perso);
-		vueJoueur=new char[longueur][largeur];
+		vueJoueur=new String[longueur][largeur];
 		
 		
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				vueJoueur[i][j]='~';
+				vueJoueur[i][j]="~";
 			}
 		}
 	}
@@ -56,12 +56,12 @@ public class Personnage extends Donjon{
 	public Personnage(int longueur, int largeur, ArrayList<Objet> inventaire) throws ExceptionJeu {
 		super(longueur,largeur);
 		setInventaire(inventaire);
-		vueJoueur=new char[longueur][largeur];
+		vueJoueur=new String[longueur][largeur];
 		
 		
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				vueJoueur[i][j]='~';
+				vueJoueur[i][j]="~";
 			}
 		}
 	}
@@ -101,28 +101,28 @@ public class Personnage extends Donjon{
 			System.err.print("Personnage trop faible ou trop puissant \n");
 	}
 
-	public char getPerso() {
+	public String getPerso() {
 		return perso;
 	}
 
-	public void setPerso(char perso) {
-		if(perso == 'X' || perso == 'M') {
+	public void setPerso(String perso) {
+		if(perso.length()<2) {
 			this.perso = perso;
 		}
 		else
 			System.err.print("Personnage inconnu \n");
 	}
 
-	public char[][] getVueJoueur() {
+	public String[][] getVueJoueur() {
 		return vueJoueur;
 	}
 
-	public void setVueJoueur(char[][] vueJoueur) {
+	public void setVueJoueur(String[][] vueJoueur) {
 		this.vueJoueur = vueJoueur;
 	}
 	
 
-	public void ramasser(Donjon d, Personnage P, Objet p) throws ExceptionJeu {
+	public void ramasser(Personnage P,Objet p) throws ExceptionJeu {
 		if(p.getObjet()=="P") {
 			inventaire.add(p);
 		}
@@ -142,6 +142,26 @@ public class Personnage extends Donjon{
 		}
 		System.out.println();
 	}
+	public void afficherVueJV2(Donjon d,Personnage P) {
+		
+		String a = "";
+
+		for(int i=0;i<d.getLongueur();i++) {
+			for(int j=0;j<d.getLargeur();j++) {
+				if(d.getCase(i, j)==P.getPerso()) {
+					vueJoueur[i][j]=P.getPerso();
+				}
+				a = a +" "+ vueJoueur[i][j];
+			}
+			a = a + "\n";
+		}
+		a = a + "\n";
+		
+		System.out.println(a);
+	}
+	public String getCaseJ(int x, int y) {
+		return vueJoueur[x][y];
+	}
 	
 	public ArrayList<Objet>affInventaire() throws ExceptionJeu {
 		if(inventaire.size()<0) {
@@ -156,47 +176,51 @@ public class Personnage extends Donjon{
 			return inventaire;
 	}
 	
+	public String toString() {
+		return "Vie : " + getVie() + "\nAttaque : " + getAttaque()+"\n";
+	}
+	
 	public void laisserPotion(int x, int y) throws ExceptionJeu{
-		if(vueJoueur[x][y]=='~') {
-			vueJoueur[x][y]='P';
+		if(vueJoueur[x][y]=="~") {
+			vueJoueur[x][y]="P";
 		}
 	}
 	
 	public void remplacerCase(int x,int y,Donjon d) throws ExceptionJeu {
 		
-		if(d.getCase(x, y)=='#') {
+		if(d.getCase(x, y)=="#") {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
-			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
-				vueJoueur[x][y]='#';
+			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]=="X") {
+				vueJoueur[x][y]="#";
 			}
 		}
 	
-		if(d.getCase(x, y)=='P') {
+		if(d.getCase(x, y)=="P") {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
-			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
-				vueJoueur[x][y]='P';
+			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]==getPerso()) {
+				vueJoueur[x][y]="P";
 			}
 		}
 		
-		if(d.getCase(x,y)=='§') {
+		if(d.getCase(x,y)=="§") {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
-			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
-				vueJoueur[x][y]='§';
+			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]==getPerso()) {
+				vueJoueur[x][y]="§";
 			}
 		}
 		
-		if(d.getCase(x, y)==' ') {
+		if(d.getCase(x, y)==" ") {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
-			if(vueJoueur[x][y]=='~' || vueJoueur[x][y]=='X') {
-				vueJoueur[x][y]=' ';
+			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]==getPerso()) {
+				vueJoueur[x][y]=" ";
 			}
 		}
 			
@@ -210,7 +234,7 @@ public class Personnage extends Donjon{
 				System.out.println("Soins terminï¿½s \n +" + inventaire.get(i).getVie()+" PV ! ");
 				inventaire.remove(i);
 			}
-			else throw new ExceptionJeu("Vous n'avez pas de potion dans votre inventaire ! \n");
+			else System.out.println("Vous n'avez pas de potion dans votre inventaire ! ");
 		}
 	}
 

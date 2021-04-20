@@ -32,7 +32,7 @@ public class Objet extends Personnage {
 	
 	//P pour une potion, ï¿½ pour un piï¿½ge et # pour un mur
 	public void setObjet(String objet) throws ExceptionJeu {
-		if(objet == "P" || objet == "§" || objet =="#") {
+		if(objet == "P" || objet == "§" || objet =="#" && objet.length()<2) {
 			this.objet = objet;
 		}
 		else 
