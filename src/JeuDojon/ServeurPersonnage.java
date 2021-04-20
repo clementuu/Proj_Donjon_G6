@@ -24,10 +24,10 @@ public class ServeurPersonnage extends Thread {
 					out = new PrintStream(socket.getOutputStream());
 					
 					//envoi du premier message
-					out.println("Escape The Donjon");
+					out.println("Escape The Donjon \n");
 					
 				
-				Personnage X = new Personnage(15,10,10,5,'X'); 
+				Personnage X = new Personnage(15,10,10,5,"X"); 
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet("#",0,0);
 				
@@ -103,6 +103,20 @@ public class ServeurPersonnage extends Thread {
 					
 					if(b==false) {
 						
+						X.afficherVueJV2(d, X);
+						
+						String a = "";
+
+						for(int i=0;i<d.getLongueur();i++) {
+							for(int j=0;j<d.getLargeur();j++) {
+								a = a +" "+  X.getCaseJ(i, j);
+							}
+							a = a + "\n";
+						}
+						a = a + "\n";
+						
+						out.println(a);
+						
 						out.println("Veuillez communiquer vos 4 prochains d�placements : ");
 						String com = in.readLine();
 						out.println("Vous avez tap� : " + com + "\n");
@@ -151,7 +165,10 @@ public class ServeurPersonnage extends Thread {
 						else out.print("Contentez vous de 4 d�placements maximum par tour \n");
 				
 						d.afficher();
-						X.afficherVueJ(d, X);
+						
+						
+						
+						 
 						
 					}
 												

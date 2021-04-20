@@ -8,7 +8,7 @@ public class Donjon {
 	
 	private int longueur;
 	private int largeur;
-	private char[][]donjon;
+	private String[][]donjon;
 	
 	//Constructeur
 	
@@ -19,12 +19,12 @@ public class Donjon {
 	public Donjon(int longueur,int largeur) throws ExceptionJeu  {
 		setLongueur(longueur);
 		setLargeur(largeur);
-		donjon=new char[longueur][largeur];
+		donjon=new String[longueur][largeur];
 	
 	
 		for(int i=0;i<longueur;i++) {
 			for(int j=0;j<largeur;j++) {
-				donjon[i][j]=' ';
+				donjon[i][j]=" ";
 			}
 		}
 	}	
@@ -135,11 +135,31 @@ public class Donjon {
 			if(x<0 || y<0 || x>longueur || y>largeur) {
 				throw new ExceptionJeu("Hors map");
 			}
-			if(donjon[x][y]==' ') {
-				donjon[x][y]='#';
+			if(donjon[x][y]==" ") {
+				donjon[x][y]="#";
 			}
 		}
 		
+<<<<<<< HEAD
+=======
+		if(p.getObjet()=="P") {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(donjon[x][y]==" ") {
+				donjon[x][y]="P";
+			}
+		}
+		
+		if(p.getObjet()=="§") {
+			if(x<0 || y<0 || x>longueur || y>largeur) {
+				throw new ExceptionJeu("Hors map");
+			}
+			if(donjon[x][y]==" ") {
+				donjon[x][y]="§";
+			}
+		}		
+>>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
 	
 	}
 	
@@ -148,17 +168,17 @@ public class Donjon {
 		x = x-1;
 		y = y-1;
 		
-		if(p.getPerso()=='X' || p.getPerso()=='M') {
-			if(x<0 || y<0 || x>longueur || y>largeur) {
-				throw new ExceptionJeu("Hors map");
-			}
-			if(donjon[x][y]==' ') {
-				donjon[x][y]=p.getPerso();
-			}
+		if(x<0 || y<0 || x>longueur || y>largeur) {
+			throw new ExceptionJeu("Hors map");
+		}
+		if(donjon[x][y]==" ") {
+			donjon[x][y]=p.getPerso();
 		}
 	}
+			
 	
-	public char getCase(int x, int y) {
+	
+	public String getCase(int x, int y) {
 		return donjon[x][y];
 	}
 	
@@ -173,12 +193,31 @@ public class Donjon {
 					//On anticipe le dï¿½placement et on regarde si la case sur laquelle on veut aller n'est pas une potion, on demande si le joueur veut la ramasser
 					if (donjon[i][j]== P.getPerso()) {
 						//On anticipe et on regarde si on ne va pas percuter un mur
+<<<<<<< HEAD
 						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le dï¿½placement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 							donjon[i][j] = ' ';
+=======
+						if(i-1>=0 && donjon[i-1][j]!="#") {  //On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
+							if(donjon[i-1][j]=="§") {
+								Objet piege = new Objet("§",5,5);
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P,d,piege);
+							}
+							if(donjon[i-1][j]=="P") {
+								Objet potion = new Objet("P",5,0);
+								System.out.println("Vous avez trouvé une potion ! ");
+								P.ramasser(P,potion);
+								System.out.println("Potion ajoutée à l'inventaire ! ");
+							}
+							donjon[i][j] = " ";
+>>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
 							P.remplacerCase(i, j, d);
 							donjon[i-1][j] = P.getPerso();
 						}
-
+						if(i-1>=0 && donjon[i-1][j]=="#") {
+							P.remplacerCase(i-1, j, d);
+						}
+						
 					}
 				
 				}	
@@ -189,11 +228,26 @@ public class Donjon {
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
-						if(i+1<=longueur && donjon[i+1][j]!='#') {
-							donjon[i][j] = ' ';
+						if(i+1<=longueur && donjon[i+1][j]!="#") {
+							if(donjon[i+1][j]=="§") {	
+								Objet piege = new Objet("§",5,5);
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P, d, piege);
+							}
+							if(donjon[i+1][j]=="P") {
+								Objet potion = new Objet("P",5,0);
+								System.out.println("Vous avez trouvé une potion ! ");
+								P.ramasser(P,potion);
+								System.out.println("Potion ajoutée à l'inventaire ! ");
+							}
+							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i+1][j] = P.getPerso();
 						}
+						if(i+1<=longueur && donjon[i+1][j]=="#") {
+							P.remplacerCase(i+1, j, d);
+						}
+					
 						
 						b=false;
 						
@@ -207,11 +261,26 @@ public class Donjon {
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
-						if(j+1<=largeur && donjon[i][j+1]!='#') {
-							donjon[i][j] = ' ';
+						if(j+1<=largeur && donjon[i][j+1]!="#") {
+							if(donjon[i][j+1]=="§") {	
+								Objet piege = new Objet("§",5,5);
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P, d, piege);
+							}
+							if(donjon[i][j+1]=="P") {
+								Objet potion = new Objet("P",5,0);
+								System.out.println("Vous avez trouvé une potion ! ");
+								P.ramasser(P,potion);
+								System.out.println("Potion ajoutée à l'inventaire ! ");
+							}
+							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i][j+1] = P.getPerso();
 						}
+						if(j+1<=largeur && donjon[i][j+1]=="#") {
+							P.remplacerCase(i, j+1, d);
+						}
+					
 						
 						b=false;
 				
@@ -224,11 +293,26 @@ public class Donjon {
 			for(int i=0;i<longueur;i++) {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso()) {
-						if(j-1>=0 && donjon[i][j-1]!='#') {
-							donjon[i][j] = ' ';
+						if(j-1>=0 && donjon[i][j-1]!="#") {
+							if(donjon[i][j-1]=="§") {
+								Objet piege = new Objet("§",5,5);
+								System.out.println("Vous êtes tombé(e) dans un piège !");
+								P.degat(P,d,piege);
+							}
+							if(donjon[i][j-1]=="P") {
+								Objet potion = new Objet("P",5,0);
+								System.out.println("Vous avez trouvé une potion ! ");
+								P.ramasser(P,potion);
+								System.out.println("Potion ajoutée à l'inventaire ! ");
+							}
+							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i][j-1] = P.getPerso();
 						}
+						if(j-1>=0 && donjon[i][j-1]=="#") {
+							P.remplacerCase(i, j-1, d);
+						}
+						
 			
 					}
 				
