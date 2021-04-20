@@ -35,13 +35,9 @@ public class ServeurPersonnage extends Thread {
 				Objet potion = new Objet("P",5,0);
 
 				Objet potionSup = new Objet("P",10,0);
-				Objet piege = new Objet("§",1,5);
-				Objet piegeDemoniaque = new Objet("§",5,10);
+				Objet piege = new Objet("ï¿½",1,5);
+				Objet piegeDemoniaque = new Objet("ï¿½",5,10);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
 				d.placerPerso(2,8,X);
 				
 				//d.placerPerso(14,9,M);

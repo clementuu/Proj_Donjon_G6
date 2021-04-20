@@ -1,5 +1,7 @@
 package JeuDojon;
 
+
+
 public class Donjon {
 	
 	//Attributs
@@ -91,6 +93,36 @@ public class Donjon {
 				
 	 */
 						
+	public void placerAlea(Objet p) {
+		
+	int minX = 0;
+	int maxX = largeur-1;
+	
+	
+	int minY = 0;
+	int maxY = longueur-1;
+	
+	
+	int alea_X = (int)Math.floor(Math.random()*(maxX-minY+1)+minX);
+	
+	int alea_Y = (int)Math.floor(Math.random()*(maxY-minY+1)+minY);
+	
+	
+	if(p.getObjet()=="P") {
+
+		if(donjon[alea_X][alea_Y]==' ') 
+			donjon[alea_X][alea_Y]='P';
+		}
+
+	
+	if(p.getObjet()=="ï¿½") {
+	
+		if(donjon[alea_X][alea_Y]==' ') {
+			donjon[alea_X][alea_Y]='ï¿½';
+		 }
+	  }
+	
+	}
 	
 	
 	public void placerObj(int x, int y, Objet p) throws ExceptionJeu{
@@ -108,23 +140,6 @@ public class Donjon {
 			}
 		}
 		
-		if(p.getObjet()=="P") {
-			if(x<0 || y<0 || x>longueur || y>largeur) {
-				throw new ExceptionJeu("Hors map");
-			}
-			if(donjon[x][y]==' ') {
-				donjon[x][y]='P';
-			}
-		}
-		
-		if(p.getObjet()=="§") {
-			if(x<0 || y<0 || x>longueur || y>largeur) {
-				throw new ExceptionJeu("Hors map");
-			}
-			if(donjon[x][y]==' ') {
-				donjon[x][y]='§';
-			}
-		}		
 	
 	}
 	
@@ -158,7 +173,7 @@ public class Donjon {
 					//On anticipe le dï¿½placement et on regarde si la case sur laquelle on veut aller n'est pas une potion, on demande si le joueur veut la ramasser
 					if (donjon[i][j]== P.getPerso()) {
 						//On anticipe et on regarde si on ne va pas percuter un mur
-						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le déplacement et on regarde si la case sur laquelle on veut aller n'est pas un mur
+						if(i-1>=0 && donjon[i-1][j]!='#') {  //On anticipe le dï¿½placement et on regarde si la case sur laquelle on veut aller n'est pas un mur
 							donjon[i][j] = ' ';
 							P.remplacerCase(i, j, d);
 							donjon[i-1][j] = P.getPerso();

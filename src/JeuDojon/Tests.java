@@ -11,8 +11,8 @@ public class Tests {
 		Objet mur = new Objet("#",0,0);
 		Objet potion = new Objet("P",5,0);
 		Objet potionSup = new Objet("P",10,0);
-		Objet piege = new Objet("§",1,5);
-		Objet piegeDemoniaque = new Objet("§",5,10);
+		Objet piege = new Objet("ï¿½",1,5);
+		Objet piegeDemoniaque = new Objet("ï¿½",5,10);
 
 		//Monstres M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
@@ -59,21 +59,25 @@ public class Tests {
 			d.placerObj(i,5,mur);
 		}
 		X.ramasser(d, X, potion);
+		
+		
 		d.placerObj(2,7,mur);
 		d.placerObj(3,7,mur);
-		d.placerObj(12,2,piegeDemoniaque);
-		d.placerObj(6,9,potionSup);
-		d.placerObj(10,6,piege);
-		d.placerObj(11,2,piege);
-		d.placerObj(5,3,potion);
 		d.placerObj(2,5,mur);
 		d.placerObj(2,4,mur);
 		d.placerObj(4,6,mur);
-		d.placerObj(12,8,piege);
-		d.placerObj(3,6,piege);
-		d.placerObj(14,4,potion);
 		
-
+		//d.placerAlea(potionSup);
+		
+		d.placerAlea(piegeDemoniaque);
+		d.placerAlea(potion);
+		d.placerAlea(piege);
+		d.placerAlea(piege);
+		d.placerAlea(piege);
+		d.placerAlea(piege);
+		d.placerAlea(potion);
+		
+		
 		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
 		
 
@@ -92,7 +96,7 @@ public class Tests {
 		
 		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
-		boolean b=false;
+	    boolean b=false;
 		
 		
 		for (int manche=0;manche<=20;manche++) {
