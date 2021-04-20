@@ -8,6 +8,7 @@ public class Personnage extends Donjon{
 	
 	private String perso;
 	private int vie;
+	private static int VIEMAX=30;
 	private ArrayList<Objet> inventaire = new ArrayList<Objet>();
 	private int attaque;
 	private String[][]vueJoueur;
@@ -74,7 +75,7 @@ public class Personnage extends Donjon{
 	}
 
 	public void setVie(int vie) {
-		if(vie>=0 && vie<=20) {
+		if(vie>=0 && vie<=VIEMAX) {
 			this.vie = vie;
 		}
 		else
@@ -112,6 +113,18 @@ public class Personnage extends Donjon{
 		else
 			System.err.print("Personnage inconnu \n");
 	}
+
+	public static int getVIEMAX() {
+		return VIEMAX;
+	}
+
+
+
+	public static void setVIEMAX(int vIEMAX) {
+		VIEMAX = vIEMAX;
+	}
+
+
 
 	public String[][] getVueJoueur() {
 		return vueJoueur;
@@ -229,10 +242,14 @@ public class Personnage extends Donjon{
 	
 	public void soin(Personnage P,ArrayList<Objet> inventaire) throws ExceptionJeu {
 		for (int i=0;i<inventaire.size();i++) {
-			if(inventaire.get(i).getObjet()=="P") {
+			if(inventaire.get(i).getObjet()=="P" && P.getVie()+inventaire.get(i).getVie()<Personnage.getVIEMAX()) {
 				P.vie=P.vie+inventaire.get(i).getVie();
 				System.out.println("Soins termin�s \n +" + inventaire.get(i).getVie()+" PV ! ");
 				inventaire.remove(i);
+			}
+			if( P.getVie()+inventaire.get(i).getVie()>=Personnage.getVIEMAX()) {
+				P.vie=Personnage.getVIEMAX();
+				System.out.println("Soins termin�s \nVotre vie est au maximum \n");
 			}
 			else System.out.println("Vous n'avez pas de potion dans votre inventaire ! ");
 		}

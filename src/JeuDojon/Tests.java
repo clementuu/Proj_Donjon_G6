@@ -77,15 +77,15 @@ public class Tests {
 		d.placerAlea(potion);
 		d.placerAlea(piege);
 		d.placerAlea(piege);
-		d.placerAlea(piege);
+		//d.placerAlea(piege);
 		d.placerAlea(piege);
 		d.placerAlea(potion);
 		
 
-		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur");
+		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur \n");
 
-	
-		X.affInventaire();
+		/*
+		 * X.affInventaire();
 	    System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
 		X.soin(X,X.getInventaire());
 		System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
@@ -93,17 +93,21 @@ public class Tests {
 		System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso()+"\n");
 		d.afficher();
 		X.affInventaire();
+		 */
+		
+		
 		
 		X.afficherVueJV2(d,X);
 		
 		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
 	    boolean b=false;
+	    boolean gameOver=false;
 		
 		
 		for (int manche=0;manche<=20;manche++) {
 			
-			if(b==false) {
+			while(b==false && gameOver==false) {
 				
 				System.out.println("Veuillez communiquer au maximum 4 dï¿½placements : ");
 				Scanner sc = new Scanner(System.in);
@@ -144,22 +148,27 @@ public class Tests {
 						
 							
 						}
-						
-					if(b==false) {
-						for(int x=0;x<d.getLongueur()-1;x++) {
-							for(int y=0;y<d.getLargeur()-1;y++) {
-								if(d.getCase(0, y)==X.getPerso() || d.getCase(d.getLongueur()-1, y)==X.getPerso() || d.getCase(x, 0)==X.getPerso() || d.getCase(x, d.getLargeur()-1)==X.getPerso()){
-									b=true;	
-								}
+										
+					for(int x=0;x<d.getLongueur()-1;x++) {
+						for(int y=0;y<d.getLargeur()-1;y++) {
+							if(d.getCase(0, y)==X.getPerso() || d.getCase(d.getLongueur()-1, y)==X.getPerso() || d.getCase(x, 0)==X.getPerso() || d.getCase(x, d.getLargeur()-1)==X.getPerso()){
+								System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");
+								b=true;	
+								sc.close();
 							}
 						}
 					}
 					
-					if(b==true) {
-						
-						System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");				
+					if(X.getVie()<=0) {
+						System.out.println("Vous êtes mort, fin de partie ");
 						sc.close();
+						gameOver=true;
 					}
+					
+						
+										
+						
+					
 					
 				
 				}					
