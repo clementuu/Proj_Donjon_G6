@@ -6,7 +6,7 @@ public class Tests {
 	
 	public static void main(String[] args) throws ExceptionJeu {
 		
-		Personnage X = new Personnage(15,10,10,5,"X"); 
+		Personnage X = new Personnage(15,10,15,5,"X"); 
 		Donjon d = new Donjon(15,10);
 		Objet mur = new Objet("#",0,0);
 		Objet potion = new Objet("P",5,0);
@@ -76,9 +76,9 @@ public class Tests {
 		d.placerAlea(piegeDemoniaque);
 		d.placerAlea(potion);
 		d.placerAlea(piege);
-		d.placerAlea(piege);
 		//d.placerAlea(piege);
-		d.placerAlea(piege);
+		//d.placerAlea(piege);
+		//d.placerAlea(piege);
 		d.placerAlea(potion);
 		
 

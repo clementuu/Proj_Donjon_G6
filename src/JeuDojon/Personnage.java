@@ -259,6 +259,6 @@ public class Personnage extends Donjon{
 	
 	public void degat(Personnage P, Donjon d, Objet o) throws ExceptionJeu {
 			P.vie=P.vie-o.getAttaque();
-			System.out.println("Degat \n -" + o.getAttaque()+" 5 PV !");				
+			System.out.println("Degat \n -" + o.getAttaque()+" PV !");				
 	}
 }
