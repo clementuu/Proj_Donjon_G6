@@ -11,8 +11,8 @@ public class Tests {
 		Objet mur = new Objet("#",0,0);
 		Objet potion = new Objet("P",5,0);
 		Objet potionSup = new Objet("P",10,0);
-		Objet piege = new Objet("ï¿½",1,5);
-		Objet piegeDemoniaque = new Objet("ï¿½",5,10);
+		Objet piege = new Objet("§",1,5);
+		Objet piegeDemoniaque = new Objet("§",5,10);
 
 		//Monstres M = new Monstres(5,5,'M'); 
 		d.placerPerso(2,8,X);
@@ -58,21 +58,20 @@ public class Tests {
 		for(int i=7; i<=11; i++) {
 			d.placerObj(i,5,mur);
 		}
-<<<<<<< HEAD
-		X.ramasser(d, X, potion);
+
+
 		
-		
-=======
+
 		//X.ramasser(X, potion);
->>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
+
 		d.placerObj(2,7,mur);
 		d.placerObj(3,7,mur);
 		d.placerObj(2,5,mur);
 		d.placerObj(2,4,mur);
 		d.placerObj(4,6,mur);
 		
-<<<<<<< HEAD
-		//d.placerAlea(potionSup);
+
+		d.placerAlea(potionSup);
 		
 		d.placerAlea(piegeDemoniaque);
 		d.placerAlea(potion);
@@ -82,13 +81,9 @@ public class Tests {
 		d.placerAlea(piege);
 		d.placerAlea(potion);
 		
-		
-		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \n");
-=======
 
 		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur");
->>>>>>> branch 'main' of https://github.com/clementuu/Proj_Donjon_G6
-		
+
 	
 		X.affInventaire();
 	    System.out.println(X.getVie()+" : Vie du Joueur "+X.getPerso());
