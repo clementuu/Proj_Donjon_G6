@@ -224,12 +224,14 @@ public class Donjon {
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
 								P.degat(P,d,piege);
+								d.placerAlea(piege);
 							}
 							if(donjon[i-1][j]=="P") {
 								Objet potion = new Objet("P",5,0);
 								System.out.println("Vous avez trouvé une potion ! ");
 								P.ramasser(P,potion);
 								System.out.println("Potion ajoutée à l'inventaire ! ");
+								d.placerAlea(potion);
 							}
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
@@ -254,12 +256,14 @@ public class Donjon {
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
 								P.degat(P, d, piege);
+								d.placerAlea(piege);
 							}
 							if(donjon[i+1][j]=="P") {
 								Objet potion = new Objet("P",5,0);
 								System.out.println("Vous avez trouvé une potion ! ");
 								P.ramasser(P,potion);
 								System.out.println("Potion ajoutée à l'inventaire ! ");
+								d.placerAlea(potion);
 							}
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
@@ -287,12 +291,14 @@ public class Donjon {
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
 								P.degat(P, d, piege);
+								d.placerAlea(piege);
 							}
 							if(donjon[i][j+1]=="P") {
 								Objet potion = new Objet("P",5,0);
 								System.out.println("Vous avez trouvé une potion ! ");
 								P.ramasser(P,potion);
 								System.out.println("Potion ajoutée à l'inventaire ! ");
+								d.placerAlea(potion);
 							}
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
@@ -319,12 +325,14 @@ public class Donjon {
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
 								P.degat(P,d,piege);
+								d.placerAlea(piege);
 							}
 							if(donjon[i][j-1]=="P") {
 								Objet potion = new Objet("P",5,0);
 								System.out.println("Vous avez trouvé une potion ! ");
 								P.ramasser(P,potion);
 								System.out.println("Potion ajoutée à l'inventaire ! ");
+								d.placerAlea(potion);
 							}
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
