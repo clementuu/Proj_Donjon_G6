@@ -7,8 +7,8 @@ public class ServeurPersonnage extends Thread {
 		
 
 		private Socket socket;
-		private PrintStream out;
 		private BufferedReader in;
+		private PrintStream out;
 		
 		public ServeurPersonnage(Socket s){
 			this.socket = s;
@@ -25,8 +25,9 @@ public class ServeurPersonnage extends Thread {
 					
 					//envoi du premier message
 					out.println("Escape The Donjon \n");
-					
 				
+				
+					
 				Personnage X = new Personnage(15,10,10,5,"X"); 
 				Donjon d = new Donjon(15,10);
 				Objet mur = new Objet("#",0,0);
@@ -35,8 +36,8 @@ public class ServeurPersonnage extends Thread {
 				Objet potion = new Objet("P",5,0);
 
 				Objet potionSup = new Objet("P",10,0);
-				Objet piege = new Objet("ï¿½",1,5);
-				Objet piegeDemoniaque = new Objet("ï¿½",5,10);
+				Objet piege = new Objet("§",1,5);
+				Objet piegeDemoniaque = new Objet("§",5,10);
 
 				d.placerPerso(2,8,X);
 				
@@ -96,35 +97,36 @@ public class ServeurPersonnage extends Thread {
 				d.placerObj(3,6,piege);
 				d.placerObj(14,4,potion);
 				
+				X.afficherVueJV2(d, X);
 				
 				boolean b=false;
 				
-				for (int manche=0;manche<=10;manche++) {
+				for (int manche=0;manche<=50;manche++) {
 					
 					if(b==false) {
-						
-						X.afficherVueJV2(d, X);
-						
+											
 						String a = "";
 
 						for(int i=0;i<d.getLongueur();i++) {
 							for(int j=0;j<d.getLargeur();j++) {
 								a = a +" "+  X.getCaseJ(i, j);
 							}
-							a = a + "\n";
+							a = a + "@";
 						}
-						a = a + "\n";
+						a = a + "@";
 						
 						out.println(a);
 						
 						out.println("Veuillez communiquer vos 4 prochains dï¿½placements : ");
+						out.flush();
 						String com = in.readLine();
-						out.println("Vous avez tapï¿½ : " + com + "\n");
+						out.println("Vous avez tapï¿½ : " + com );
+						out.flush();
 						
 						if(com.length() <= 4 ) {
 							for(int j=0;j<=com.length()-1;j++) {
-								if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z') {
-									System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
+								if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n' && com.charAt(j) != 'a' && com.charAt(j) != 'e' && com.charAt(j) != 'x') {
+									out.println("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
 								}
 							}
 							
@@ -162,13 +164,10 @@ public class ServeurPersonnage extends Thread {
 												
 						}
 						
-						else out.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
+						else out.println("Contentez vous de 4 dï¿½placements maximum par tour \n");
 				
 						d.afficher();
-						
-						
-						
-						 
+					
 						
 					}
 												
@@ -178,14 +177,13 @@ public class ServeurPersonnage extends Thread {
 			socket.close();
 			
 			
-			
-			
 		} catch (IOException | ExceptionJeu e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 					
-				
+		
+					
+						
    }		
 				
 }

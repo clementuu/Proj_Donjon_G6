@@ -22,7 +22,12 @@ public class Personnage extends Donjon{
 		setAttaque(attaque);
 	}		
 	
-
+	public Personnage(int longueur, int vie,int attaque, String perso) throws ExceptionJeu {
+		super(longueur);
+		setVie(vie);
+		setAttaque(attaque);
+		setPerso(perso);
+	}		
 	
 	public Personnage(int longueur, int largeur, int vie, int attaque) throws ExceptionJeu {
 		super(longueur,largeur);
@@ -241,24 +246,45 @@ public class Personnage extends Donjon{
 	
 	
 	public void soin(Personnage P,ArrayList<Objet> inventaire) throws ExceptionJeu {
-		for (int i=0;i<inventaire.size();i++) {
-			if(inventaire.get(i).getObjet()=="P" && P.getVie()+inventaire.get(i).getVie()<Personnage.getVIEMAX()) {
-				P.vie=P.vie+inventaire.get(i).getVie();
-				System.out.println("Soins termin�s \n +" + inventaire.get(i).getVie()+" PV ! ");
-				inventaire.remove(i);
+		boolean soin=false;
+		while(soin==false) {
+			for (int i=0;i<inventaire.size();i++) {
+				if(inventaire.get(i).getObjet()=="P" && P.getVie()+inventaire.get(i).getVie()<Personnage.getVIEMAX()) {
+					P.vie=P.vie+inventaire.get(i).getVie();
+					System.out.println("Soins termin�s \n +" + inventaire.get(i).getVie()+" PV ! \nVie : " + P.getVie());
+					inventaire.remove(i);
+					soin=true;
+				}
+				if( P.getVie()+inventaire.get(i).getVie()>=Personnage.getVIEMAX() && soin==false) {
+					P.vie=Personnage.getVIEMAX();
+					System.out.println("Soins termin�s \nVotre vie est au maximum \nVie : " + P.getVie());
+					inventaire.remove(i);
+					soin=true;
+				}
+				if(inventaire.size()==0 && soin==false) {
+					System.out.println("Vous n'avez pas de potion dans votre inventaire ! ");
+				}
 			}
-			if( P.getVie()+inventaire.get(i).getVie()>=Personnage.getVIEMAX()) {
-				P.vie=Personnage.getVIEMAX();
-				System.out.println("Soins termin�s \nVotre vie est au maximum \n");
-			}
-			else System.out.println("Vous n'avez pas de potion dans votre inventaire ! ");
 		}
+		
 	}
 
 	//u
 	
 	public void degat(Personnage P, Donjon d, Objet o) throws ExceptionJeu {
-			P.vie=P.vie-o.getAttaque();
-			System.out.println("Degat \n -" + o.getAttaque()+" PV !");				
+		P.vie=P.vie-o.getAttaque();
+		System.out.println("Degat \n -" + o.getAttaque()+" PV !");				
 	}
+	
+	public void atkSurprise(Personnage P, Monstres M) {
+		
+		int minX = 1;
+		int maxX = 5;	
+		
+		int alea_X = (int)Math.floor(Math.random()*(maxX-minX)+1);
+		P.vie=P.vie-alea_X;
+		System.out.println("Degat \n -" + alea_X + " PV ! ");
+		
+	}
+	
 }

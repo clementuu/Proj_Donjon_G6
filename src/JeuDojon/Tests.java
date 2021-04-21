@@ -14,10 +14,11 @@ public class Tests {
 		Objet piege = new Objet("§",1,5);
 		Objet piegeDemoniaque = new Objet("§",5,10);
 
-		//Monstres M = new Monstres(5,5,'M'); 
+		Monstres M = new Monstres(0,5,5,"M"); 
 		d.placerPerso(2,8,X);
 		
-		//d.placerPerso(14,9,M);
+		d.placerPerso(14,9,M);
+		d.placerPerso(5,2,M);
 		
 		for(int i=1; i<=10; i++) {
 			d.placerObj(i,1,mur);
@@ -117,7 +118,7 @@ public class Tests {
 				if(com.length() < 5 ) {
 
 					for(int j=0;j<com.length()-1;j++) {
-						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n') {
+						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n' && com.charAt(j) != 'a' && com.charAt(j) != 'e' && com.charAt(j) != 'x') {
 							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
 						}
 					}					
@@ -151,33 +152,31 @@ public class Tests {
 										
 					for(int x=0;x<d.getLongueur()-1;x++) {
 						for(int y=0;y<d.getLargeur()-1;y++) {
-							if(d.getCase(0, y)==X.getPerso() || d.getCase(d.getLongueur()-1, y)==X.getPerso() || d.getCase(x, 0)==X.getPerso() || d.getCase(x, d.getLargeur()-1)==X.getPerso()){
+							if(d.getCase(0, y)==X.getPerso() || d.getCase(d.getLongueur()-1, y)==X.getPerso() || d.getCase(x, 0)==X.getPerso() || d.getCase(x, d.getLargeur()-1)==X.getPerso() && b==false){
 								System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");
-								b=true;	
 								sc.close();
+								b=true;									
 							}
 						}
 					}
 					
-					if(X.getVie()<=0) {
+					if(X.getVie()<=0 && gameOver==false) {
 						System.out.println("Vous êtes mort, fin de partie ");
 						sc.close();
 						gameOver=true;
 					}
-					
-						
-										
-						
-					
-					
+			
 				
 				}					
 				
 				
 				else System.err.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
 		
-				//d.afficher();
-				X.afficherVueJ(d,X);
+				d.afficher();
+				if(b==false && gameOver==false) {
+					X.afficherVueJ(d,X);
+				}
+				
 			}
 
 		}

@@ -226,6 +226,11 @@ public class Donjon {
 								P.degat(P,d,piege);
 								d.placerAlea(piege);
 							}
+							if(donjon[i-1][j]=="M") {
+								Monstres monstre = new Monstres(0,5,5,"M");
+								System.out.println("Vous avez combattu un monstre !");
+								P.atkSurprise(P,monstre);
+							}
 							if(donjon[i-1][j]=="P") {
 								Objet potion = new Objet("P",5,0);
 								System.out.println("Vous avez trouvé une potion ! ");
@@ -252,6 +257,11 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(i+1<=longueur && donjon[i+1][j]!="#") {
+							if(donjon[i+1][j]=="M") {
+								Monstres monstre = new Monstres(0,5,5,"M");
+								System.out.println("Vous avez combattu un monstre !");
+								P.atkSurprise(P,monstre);
+							}
 							if(donjon[i+1][j]=="§") {	
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
@@ -287,6 +297,11 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso() && b==true) {
 						if(j+1<=largeur && donjon[i][j+1]!="#") {
+							if(donjon[i][j+1]=="M") {
+								Monstres monstre = new Monstres(0,5,5,"M");
+								System.out.println("Vous avez combattu un monstre !");
+								P.atkSurprise(P,monstre);
+							}
 							if(donjon[i][j+1]=="§") {	
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
@@ -321,6 +336,11 @@ public class Donjon {
 				for(int j=0;j<largeur;j++) {
 					if (donjon[i][j]== P.getPerso()) {
 						if(j-1>=0 && donjon[i][j-1]!="#") {
+							if(donjon[i][j-1]=="M") {
+								Monstres monstre = new Monstres(0,5,5,"M");
+								System.out.println("Vous avez combattu un monstre !");
+								P.atkSurprise(P,monstre);
+							}
 							if(donjon[i][j-1]=="§") {
 								Objet piege = new Objet("§",5,5);
 								System.out.println("Vous êtes tombé(e) dans un piège !");
