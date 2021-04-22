@@ -1,5 +1,6 @@
 package JeuDojon;
 
+import java.io.PrintStream;
 import java.util.*;
 
 public class Personnage extends Donjon{
@@ -160,7 +161,8 @@ public class Personnage extends Donjon{
 		}
 		System.out.println();
 	}
-	public void afficherVueJV2(Donjon d,Personnage P) {
+	
+	public void afficherVueJV2(Donjon d,Personnage P, PrintStream out) {
 		
 		String a = "";
 
@@ -175,16 +177,17 @@ public class Personnage extends Donjon{
 		}
 		a = a + "\n";
 		
-		System.out.println(a);
+		out.println(a);
 	}
+	
 	public String getCaseJ(int x, int y) {
 		return vueJoueur[x][y];
 	}
 	
 	public ArrayList<Objet>affInventaire() throws ExceptionJeu {
-		if(inventaire.size()<0) {
-			throw new ExceptionJeu("Inventaire plus que vide \n");
-		}
+		if(inventaire.size()==0){
+			System.out.println("L'inventaire est vide");
+		} 
 		else
 			System.out.println("Inventaire : ");
 			for (int i=0;i<inventaire.size();i++) {
@@ -214,26 +217,8 @@ public class Personnage extends Donjon{
 				vueJoueur[x][y]="#";
 			}
 		}
-	
-		if(d.getCase(x, y)=="P") {
-			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
-				throw new ExceptionJeu("Hors map");
-			}
-			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]==getPerso()) {
-				vueJoueur[x][y]="P";
-			}
-		}
 		
-		if(d.getCase(x,y)=="§") {
-			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
-				throw new ExceptionJeu("Hors map");
-			}
-			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]==getPerso()) {
-				vueJoueur[x][y]="§";
-			}
-		}
-		
-		if(d.getCase(x, y)==" ") {
+		if(d.getCase(x, y)==" " || d.getCase(x, y)=="P" || d.getCase(x,y)=="§") {
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}

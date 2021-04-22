@@ -21,9 +21,7 @@ public class Client {
 			in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 			out = new PrintStream(socket.getOutputStream());
 			Scanner scanner = new Scanner (System.in);
-			System.out.println(in.readLine());
-			
-			
+			System.out.println(in.readLine());			
 
 			//System.out.println(in.readLine());
 			

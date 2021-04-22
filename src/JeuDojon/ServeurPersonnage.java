@@ -97,7 +97,7 @@ public class ServeurPersonnage extends Thread {
 				d.placerObj(3,6,piege);
 				d.placerObj(14,4,potion);
 				
-				X.afficherVueJV2(d, X);
+				X.afficherVueJV2(d, X,out);
 				
 				boolean b=false;
 				
