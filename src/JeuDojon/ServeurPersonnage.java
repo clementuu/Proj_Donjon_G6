@@ -24,24 +24,20 @@ public class ServeurPersonnage extends Thread {
 					out = new PrintStream(socket.getOutputStream());
 					
 					//envoi du premier message
-					out.println("Escape The Donjon \n");
-				
-				
+					out.println("Escape The Donjon \n");				
 					
 				Personnage X = new Personnage(15,10,10,5,"X"); 
+				Monstres M = new Monstres(0,5,5,"M");
 				Donjon d = new Donjon(15,10);
-				Objet mur = new Objet("#",0,0);
-				
-				
+				Objet mur = new Objet("#",0,0);			
 				Objet potion = new Objet("P",5,0);
-
 				Objet potionSup = new Objet("P",10,0);
 				Objet piege = new Objet("§",1,5);
 				Objet piegeDemoniaque = new Objet("§",5,10);
 
 				d.placerPerso(2,8,X);
 				
-				//d.placerPerso(14,9,M);
+				d.placerPerso(14,9,M);
 				
 				for(int i=1; i<=10; i++) {
 					d.placerObj(i,1,mur);
@@ -82,21 +78,24 @@ public class ServeurPersonnage extends Thread {
 				for(int i=7; i<=11; i++) {
 					d.placerObj(i,5,mur);
 				}
+				d.placerObj(2,5,mur);
+				
+				d.placerObj(2,4,mur);
+				
+				d.placerObj(4,6,mur);
 				
 				d.placerObj(2,7,mur);
-				d.placerObj(3,7,mur);
-				d.placerObj(12,2,piegeDemoniaque);
-				d.placerObj(6,9,potionSup);
-				d.placerObj(10,6,piege);
-				d.placerObj(11,2,piege);
-				d.placerObj(5,3,potion);
-				d.placerObj(2,5,mur);
-				d.placerObj(2,4,mur);
-				d.placerObj(4,6,mur);
-				d.placerObj(12,8,piege);
-				d.placerObj(3,6,piege);
-				d.placerObj(14,4,potion);
 				
+				d.placerObj(3,7,mur);
+				
+				d.placerAlea(piegeDemoniaque);
+				d.placerAlea(potionSup);
+				d.placerAlea(piege);
+				d.placerAlea(piege);
+				d.placerAlea(potion);
+				d.placerAlea(potion);
+			
+			
 				X.afficherVueJV2(d, X,out);
 				
 				boolean b=false;
@@ -109,7 +108,10 @@ public class ServeurPersonnage extends Thread {
 
 						for(int i=0;i<d.getLongueur();i++) {
 							for(int j=0;j<d.getLargeur();j++) {
-								a = a +" "+  X.getCaseJ(i, j);
+								if(d.getCase(i, j)==X.getPerso()) {
+									X.getVueJoueur()[i][j]=X.getPerso();
+								}
+								a = a +" "+ X.getVueJoueur()[i][j];
 							}
 							a = a + "@";
 						}

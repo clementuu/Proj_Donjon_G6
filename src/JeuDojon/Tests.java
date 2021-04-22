@@ -13,8 +13,8 @@ public class Tests {
 		Objet potionSup = new Objet("P",10,0);
 		Objet piege = new Objet("§",1,5);
 		Objet piegeDemoniaque = new Objet("§",5,10);
-
-		Monstres M = new Monstres(0,5,5,"M"); 
+		Monstres M = new Monstres(0,5,5,"M");
+		
 		d.placerPerso(2,8,X);
 		
 		d.placerPerso(14,9,M);
@@ -98,7 +98,7 @@ public class Tests {
 		
 		
 		
-		X.afficherVueJV2(d,X);
+		X.afficherVueJ(d,X);
 		
 		//System.out.println( "Test getter getCase() : " + d.getCase(0,0) + "\nDone\n");
 		
@@ -118,7 +118,7 @@ public class Tests {
 				if(com.length() < 5 ) {
 
 					for(int j=0;j<com.length()-1;j++) {
-						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'y' && com.charAt(j) != 'n' && com.charAt(j) != 'a' && com.charAt(j) != 'e' && com.charAt(j) != 'x') {
+						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'a' && com.charAt(j) != 'e' && com.charAt(j) != 'x') {
 							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
 						}
 					}					
@@ -172,7 +172,7 @@ public class Tests {
 				
 				else System.err.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
 		
-				d.afficher();
+				//d.afficher();
 				if(b==false && gameOver==false) {
 					X.afficherVueJ(d,X);
 				}

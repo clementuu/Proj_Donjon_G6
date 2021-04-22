@@ -16,7 +16,7 @@ public class Client {
 			Socket socket= new Socket ("127.0.0.1", 6112);
 			
 			System.out.println("Bienvenue");
-			System.out.println("Règles du jeu : 4 déplacements maximum par tour autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur");
+			System.out.println("Règles du jeu : 4 déplacements maximum par tour autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur \n");
 			
 			in = new BufferedReader (new InputStreamReader(socket.getInputStream()));
 			out = new PrintStream(socket.getOutputStream());
@@ -40,6 +40,7 @@ public class Client {
 				}
 				System.out.println(newView);
 				
+				System.out.println(in.readLine());
 				System.out.println(in.readLine());
 				System.out.println(in.readLine());
 			}

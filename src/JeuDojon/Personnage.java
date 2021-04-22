@@ -1,6 +1,6 @@
 package JeuDojon;
 
-import java.io.PrintStream;
+import java.io.*;
 import java.util.*;
 
 public class Personnage extends Donjon{
@@ -173,11 +173,26 @@ public class Personnage extends Donjon{
 				}
 				a = a +" "+ vueJoueur[i][j];
 			}
-			a = a + "\n";
+			a = a + "@";
 		}
-		a = a + "\n";
+		a = a + "@";
 		
 		out.println(a);
+	}
+	
+	public void recupVueJV2(Donjon d,Personnage P,BufferedReader in) throws IOException {
+		
+		String newView="";
+		
+		for(int j=0;j<in.readLine().length();j++) {
+			if(in.readLine().charAt(j)!='@') {
+				newView += in.readLine().charAt(j);
+			}
+			if(in.readLine().charAt(j)=='@') {
+				newView += "\n";
+			}
+		}
+		System.out.println(newView);
 	}
 	
 	public String getCaseJ(int x, int y) {
@@ -213,7 +228,7 @@ public class Personnage extends Donjon{
 			if(x<0 || y<0 || x>d.getLongueur() || y>d.getLargeur()) {
 				throw new ExceptionJeu("Hors map");
 			}
-			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]=="X") {
+			if(vueJoueur[x][y]=="~" || vueJoueur[x][y]==getPerso()) {
 				vueJoueur[x][y]="#";
 			}
 		}
