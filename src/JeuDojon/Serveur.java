@@ -36,7 +36,7 @@ public class Serveur {
 						//démarrage 
 						game.start();
 						System.out.println("client "+clientNo+" servi");
-						
+						  
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

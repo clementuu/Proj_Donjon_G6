@@ -43,6 +43,7 @@ public class Client {
 				System.out.println(in.readLine());
 				System.out.println(in.readLine());
 				System.out.println(in.readLine());
+				//System.out.println(in.readLine());
 			}
 			
 			scanner.close();

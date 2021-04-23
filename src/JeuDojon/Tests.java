@@ -15,7 +15,7 @@ public class Tests {
 		Objet piegeDemoniaque = new Objet("§",5,10);
 		Monstres M = new Monstres(0,5,5,"M");
 		
-		d.placerPerso(2,8,X);
+		d.placerPerso(7,8,X);
 		
 		d.placerPerso(14,9,M);
 		d.placerPerso(5,2,M);
@@ -79,7 +79,8 @@ public class Tests {
 		d.placerAlea(piege);
 		//d.placerAlea(piege);
 		//d.placerAlea(piege);
-		//d.placerAlea(piege);
+		d.placerAlea(piege);
+		d.placerAlea(potion);
 		d.placerAlea(potion);
 		
 
@@ -106,7 +107,7 @@ public class Tests {
 	    boolean gameOver=false;
 		
 		
-		for (int manche=0;manche<=20;manche++) {
+		for (int manche=0;manche<=40;manche++) {
 			
 			while(b==false && gameOver==false) {
 				
@@ -172,13 +173,16 @@ public class Tests {
 				
 				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
 		
-				d.afficher();
+				//d.afficher();
 				if(b==false && gameOver==false) {
 					X.afficherVueJ(d,X);
 				}
 				
 			}
 
+		}
+		if(b==false && gameOver==false) {
+			System.out.println("Vous avez passé trop de temps dans le donjon... \nVous commencez à sombrer dans la folie... \nGame Over ");
 		}
 	}
 }

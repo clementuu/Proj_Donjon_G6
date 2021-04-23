@@ -153,6 +153,45 @@ public class Donjon {
 	
 	}
 	
+	public void placerAlea(Personnage p) {
+		
+		int minX = 0;
+		int maxX = longueur-1;
+		
+		
+		int minY = 0;
+		int maxY = largeur-1;
+		
+		
+		int alea_X = (int)Math.floor(Math.random()*(maxX-minY+1)+minX);
+		
+		int alea_Y = (int)Math.floor(Math.random()*(maxY-minY+1)+minY);
+		
+		if(donjon[alea_X][alea_Y]==" ") {
+			donjon[alea_X][alea_Y]=p.getPerso();
+		}
+			
+					
+	
+		if(donjon[alea_X][alea_Y]!=" ") {
+			
+			boolean occupe =true;
+			while(occupe==true) {
+				
+				int x = (int)Math.floor(Math.random()*(maxX-minY+1)+minX);
+				
+				int y = (int)Math.floor(Math.random()*(maxY-minY+1)+minY);
+				
+				if(donjon[x][y]==" ") {
+					donjon[x][y]=p.getPerso();
+					occupe=false;
+				}
+				
+			}
+		}
+		
+		}
+	
 	
 	public void placerObj(int x, int y, Objet p) throws ExceptionJeu{
 		
