@@ -83,7 +83,7 @@ public class Tests {
 		d.placerAlea(potion);
 		
 
-		System.out.println("Rï¿½gles du jeu : 4 dï¿½placements maximum par tout autorisï¿½s \nLï¿½gende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \nï¿½ = Piï¿½ge \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur \n");
+		System.out.println("Règles du jeu : 4 déplacements maximum par tout autorisés \nLégende : \nX = Joueur \nM = Monstre \n# = Mur \nP = Potion \n§ = Piège \nCommandes : \nz = haut \ns = bas \nd = droite \nq = gauche \ne = afficher l'inventaire \na = soin \nx = afficher stats joueur \n");
 
 		/*
 		 * X.affInventaire();
@@ -110,16 +110,16 @@ public class Tests {
 			
 			while(b==false && gameOver==false) {
 				
-				System.out.println("Veuillez communiquer au maximum 4 dï¿½placements : ");
+				System.out.println("Veuillez communiquer au maximum 4 déplacements : ");
 				Scanner sc = new Scanner(System.in);
 				String com = sc.next();
-				System.out.println("Vous avez tapï¿½ : " + com + "\n");
+				System.out.println("Vous avez tapé : " + com + "\n");
 				
 				if(com.length() < 5 ) {
 
 					for(int j=0;j<com.length()-1;j++) {
 						if(com.charAt(j) != 'q' && com.charAt(j) != 'd' && com.charAt(j) != 's' && com.charAt(j) != 'z' && com.charAt(j) != 'a' && com.charAt(j) != 'e' && com.charAt(j) != 'x') {
-							System.err.print("Mauvaise commande, veuillez rï¿½ï¿½ssayer \n");
+							System.err.print("Mauvaise commande, veuillez rééssayer \n");
 						}
 					}					
 					
@@ -153,7 +153,7 @@ public class Tests {
 					for(int x=0;x<d.getLongueur()-1;x++) {
 						for(int y=0;y<d.getLargeur()-1;y++) {
 							if(d.getCase(0, y)==X.getPerso() || d.getCase(d.getLongueur()-1, y)==X.getPerso() || d.getCase(x, 0)==X.getPerso() || d.getCase(x, d.getLargeur()-1)==X.getPerso() && b==false){
-								System.out.println("Fï¿½licitations! Niveau terminï¿½ \n");
+								System.out.println("Félicitations! Partie terminée \n");
 								sc.close();
 								b=true;									
 							}
@@ -170,9 +170,9 @@ public class Tests {
 				}					
 				
 				
-				else System.err.print("Contentez vous de 4 dï¿½placements maximum par tour \n");
+				else System.err.print("Contentez vous de 4 déplacements maximum par tour \n");
 		
-				//d.afficher();
+				d.afficher();
 				if(b==false && gameOver==false) {
 					X.afficherVueJ(d,X);
 				}

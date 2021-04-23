@@ -73,7 +73,6 @@ public class Personnage extends Donjon{
 		}
 	}
 		
-	
 	//Geters et seters
 
 	public int getVie() {
@@ -216,12 +215,14 @@ public class Personnage extends Donjon{
 		return "Vie : " + getVie() + "\nAttaque : " + getAttaque()+"\n";
 	}
 	
-	public void laisserPotion(int x, int y) throws ExceptionJeu{
+	/*
+	 * public void laisserPotion(int x, int y) throws ExceptionJeu{
 		if(vueJoueur[x][y]=="~") {
 			vueJoueur[x][y]="P";
 		}
 	}
-	
+	 */
+		
 	public void remplacerCase(int x,int y,Donjon d) throws ExceptionJeu {
 		
 		if(d.getCase(x, y)=="#") {
@@ -249,13 +250,13 @@ public class Personnage extends Donjon{
 		boolean soin=false;
 		while(soin==false) {
 			for (int i=0;i<inventaire.size();i++) {
-				if(inventaire.get(i).getObjet()=="P" && P.getVie()+inventaire.get(i).getVie()<Personnage.getVIEMAX()) {
-					P.vie=P.vie+inventaire.get(i).getVie();
-					System.out.println("Soins termin�s \n +" + inventaire.get(i).getVie()+" PV ! \nVie : " + P.getVie());
+				if(inventaire.size()!=0 && inventaire.get(i).getObjet()=="P" && P.getVie()+inventaire.get(i).getSoin()<Personnage.getVIEMAX() && soin==false) {
+					P.vie=P.vie+inventaire.get(i).getSoin();
+					System.out.println("Soins termin�s \n +" + inventaire.get(i).getSoin()+" PV ! \nVie : " + P.getVie());
 					inventaire.remove(i);
 					soin=true;
 				}
-				if( P.getVie()+inventaire.get(i).getVie()>=Personnage.getVIEMAX() && soin==false) {
+				if( inventaire.size()!=0 && P.getVie()+inventaire.get(i).getSoin()>=Personnage.getVIEMAX() && soin==false) {
 					P.vie=Personnage.getVIEMAX();
 					System.out.println("Soins termin�s \nVotre vie est au maximum \nVie : " + P.getVie());
 					inventaire.remove(i);
@@ -272,8 +273,8 @@ public class Personnage extends Donjon{
 	//u
 	
 	public void degat(Personnage P, Donjon d, Objet o) throws ExceptionJeu {
-		P.vie=P.vie-o.getAttaque();
-		System.out.println("Degat \n -" + o.getAttaque()+" PV !");				
+		P.vie=P.vie-o.getDegats();
+		System.out.println("Degat \n -" + o.getDegats()+" PV !");				
 	}
 	
 	public void atkSurprise(Personnage P, Monstres M) {

@@ -241,9 +241,11 @@ public class Donjon {
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i-1][j] = P.getPerso();
+							System.out.println("Déplacement effectué ! ");
 						}
 						if(i-1>=0 && donjon[i-1][j]=="#") {
 							P.remplacerCase(i-1, j, d);
+							System.out.println("Déplacement annulé ! (mur) ");
 						}
 						
 					}
@@ -278,9 +280,11 @@ public class Donjon {
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i+1][j] = P.getPerso();
+							System.out.println("Déplacement effectué ! ");
 						}
 						if(i+1<=longueur && donjon[i+1][j]=="#") {
 							P.remplacerCase(i+1, j, d);
+							System.out.println("Déplacement annulé ! (mur) ");
 						}
 					
 						
@@ -318,9 +322,11 @@ public class Donjon {
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i][j+1] = P.getPerso();
+							System.out.println("Déplacement effectué ! ");
 						}
 						if(j+1<=largeur && donjon[i][j+1]=="#") {
 							P.remplacerCase(i, j+1, d);
+							System.out.println("Déplacement annulé ! (mur) ");
 						}
 					
 						
@@ -357,9 +363,11 @@ public class Donjon {
 							donjon[i][j] = " ";
 							P.remplacerCase(i, j, d);
 							donjon[i][j-1] = P.getPerso();
+							System.out.println("Déplacement effectué ! ");
 						}
 						if(j-1>=0 && donjon[i][j-1]=="#") {
 							P.remplacerCase(i, j-1, d);
+							System.out.println("Déplacement annulé ! (mur) ");
 						}
 						
 			
